@@ -21,6 +21,7 @@ data class RecipeDTO(
     val longDateAdded: Int,
     @Json(name = "long_date_updated")
     val longDateUpdated: Int,
+    @Json(name = "pk")
     val id: Int,
     val publisher: String,
     val rating: Int,
