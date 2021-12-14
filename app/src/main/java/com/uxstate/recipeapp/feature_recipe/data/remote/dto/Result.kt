@@ -20,7 +20,7 @@ data class Result(
     val longDateAdded: Int,
     @Json(name = "long_date_updated")
     val longDateUpdated: Int,
-    val pk: Int,
+    val id: Int,
     val publisher: String,
     val rating: Int,
     @Json(name = "source_url")
