@@ -1,4 +1,4 @@
-package com.uxstate.recipeapp.ui.theme
+package com.uxstate.recipeapp.feature_recipe.presentation.ui.theme
 
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.Shapes
