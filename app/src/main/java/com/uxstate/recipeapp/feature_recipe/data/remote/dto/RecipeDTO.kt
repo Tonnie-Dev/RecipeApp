@@ -5,7 +5,7 @@ import com.squareup.moshi.Json
 import com.squareup.moshi.JsonClass
 
 @JsonClass(generateAdapter = true)
-data class Result(
+data class RecipeDTO(
     @Json(name = "cooking_instructions")
     val cookingInstructions: Any?,
     @Json(name = "date_added")
