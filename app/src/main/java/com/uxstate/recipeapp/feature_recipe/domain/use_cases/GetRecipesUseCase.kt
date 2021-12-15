@@ -7,7 +7,7 @@ import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
 
 
-class GetRecipes (private val repository: RecipeRepository){
+class GetRecipesUseCase (private val repository: RecipeRepository){
 
     operator fun invoke(  token: String,
                           page: Int,
