@@ -21,22 +21,50 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import com.squareup.moshi.Moshi
+import com.squareup.moshi.kotlin.reflect.KotlinJsonAdapterFactory
+import com.uxstate.recipeapp.feature_recipe.data.remote.RecipeAPI
 import com.uxstate.recipeapp.feature_recipe.presentation.ui.theme.RecipeAppTheme
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers.IO
+import kotlinx.coroutines.launch
+import retrofit2.Retrofit
+import retrofit2.converter.moshi.MoshiConverterFactory
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
 
-        
-       /* setContent {
-            RecipeAppTheme {
-                // A surface container using the 'background' color from the theme
-                Surface(color = MaterialTheme.colors.background) {
-                    Greeting("Android")
-                }
-            }
-        }*/
+
+        CoroutineScope(IO).launch {
+
+            //build moshi
+
+            val moshi = Moshi.Builder()
+                    .add(KotlinJsonAdapterFactory())
+                    .build()
+
+            //build service using retrofit
+            val recipeAPI = Retrofit.Builder()
+                    .addConverterFactory(MoshiConverterFactory.create(moshi))
+                    .baseUrl(RecipeAPI.BASE_URL)
+                    .build()
+                    .create(RecipeAPI::class.java)
+
+            //get recipe
+
+        }
+
+
+        /* setContent {
+             RecipeAppTheme {
+                 // A surface container using the 'background' color from the theme
+                 Surface(color = MaterialTheme.colors.background) {
+                     Greeting("Android")
+                 }
+             }
+         }*/
     }
 }
 /*
