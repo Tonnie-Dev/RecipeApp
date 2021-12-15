@@ -12,10 +12,10 @@ interface RecipeAPI {
     companion object {
 
         const val BASE_URL = "https://food2fork.ca/api/recipe/"
-
+        const val AUTH_TOKEN = "Token 9c8b06d329136da358c2d00e76946b0111ce2c48"
     }
 
-//search all recipes
+    //search all recipes
     @GET(value = "/search")
     suspend fun searchRecipes(
         @Header("Authorization")
@@ -23,18 +23,18 @@ interface RecipeAPI {
         @Query("page")
         page: Int,
         @Query("query")
-        query:String
+        query: String
     ): RecipeSearchResponse
 
 
     //search a single recipe
-@GET(value = "/get")
-suspend fun getRecipe(
+    @GET(value = "/get")
+    suspend fun getRecipe(
         @Header("Authorization")
         token: String,
         @Query("id")
-        id:Int
-):RecipeDTO
+        id: Int
+    ): RecipeDTO
 
 
 }

@@ -26,17 +26,20 @@ import com.uxstate.recipeapp.feature_recipe.presentation.ui.theme.RecipeAppTheme
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContent {
+
+
+        
+       /* setContent {
             RecipeAppTheme {
                 // A surface container using the 'background' color from the theme
                 Surface(color = MaterialTheme.colors.background) {
                     Greeting("Android")
                 }
             }
-        }
+        }*/
     }
 }
-
+/*
 @Composable
 fun Greeting(name: String) {
 
@@ -79,7 +82,7 @@ fun Greeting(name: String) {
        }
         
         Text(text = "800 Calories", modifier = Modifier.padding(10.dp))
-        Button(onClick = { /*TODO*/ }, modifier = Modifier
+        Button(onClick = { *//*TODO*//* }, modifier = Modifier
                 .padding(10.dp)
                 .align(CenterHorizontally)) {
             Text(text = "Order Now")
@@ -95,7 +98,7 @@ fun DefaultPreview() {
     RecipeAppTheme {
         Greeting("Android")
     }
-}
+}*/
 
 
 /* Column(modifier = Modifier.verticalScroll(state = scrollState).background(color = Color(0xFFF2F2F2)).fillMaxSize()) {
