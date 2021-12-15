@@ -11,9 +11,6 @@ data class RecipesListDTO(
     val results: List<RecipeDTO>
 )
 
-fun RecipesListDTO.toRecipesList():RecipesList{
-
-    val recipesList = emptyList<Recipe>()
-
-   return results.map {  recipesList.add(it)}
+fun RecipesListDTO.toRecipeList():RecipesList{
+   return RecipesList(results = results.map { it.toRecipe() })
 }
