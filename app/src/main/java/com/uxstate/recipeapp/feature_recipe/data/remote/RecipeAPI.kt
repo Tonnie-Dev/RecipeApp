@@ -1,7 +1,7 @@
 package com.uxstate.recipeapp.feature_recipe.data.remote
 
 import com.uxstate.recipeapp.feature_recipe.data.remote.dto.RecipeDTO
-import com.uxstate.recipeapp.feature_recipe.data.remote.dto.RecipeSearchResponse
+import com.uxstate.recipeapp.feature_recipe.data.remote.dto.RecipesResultDTO
 import retrofit2.http.GET
 import retrofit2.http.Header
 import retrofit2.http.Query
@@ -24,7 +24,7 @@ interface RecipeAPI {
         page: Int,
         @Query("query")
         query: String
-    ): RecipeSearchResponse
+    ): RecipesResultDTO
 
 
     //search a single recipe

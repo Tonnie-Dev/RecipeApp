@@ -5,7 +5,7 @@ import com.squareup.moshi.Json
 import com.squareup.moshi.JsonClass
 
 @JsonClass(generateAdapter = true)
-data class RecipeSearchResponse(
+data class RecipesResultDTO(
     val count: Int,
     val results: List<RecipeDTO>
 )
