@@ -3,9 +3,9 @@ package com.uxstate.recipeapp.feature_recipe.data.remote.repository
 import com.uxstate.recipeapp.core.util.Resource
 import com.uxstate.recipeapp.feature_recipe.data.remote.RecipeAPI
 import com.uxstate.recipeapp.feature_recipe.data.remote.dto.toRecipe
-import com.uxstate.recipeapp.feature_recipe.data.remote.dto.toRecipesResult
+import com.uxstate.recipeapp.feature_recipe.data.remote.dto.toRecipesList
 import com.uxstate.recipeapp.feature_recipe.domain.model.Recipe
-import com.uxstate.recipeapp.feature_recipe.domain.model.RecipesResult
+import com.uxstate.recipeapp.feature_recipe.domain.model.RecipesList
 import com.uxstate.recipeapp.feature_recipe.domain.repository.RecipeRepository
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
@@ -17,7 +17,7 @@ class RecipeRepositoryImpl(private val api: RecipeAPI) : RecipeRepository {
         token: String,
         page: Int,
         query: String
-    ): Flow<Resource<RecipesResult>> = flow {
+    ): Flow<Resource<RecipesList>> = flow {
 
 
         //initially emit Loading status
@@ -28,7 +28,7 @@ class RecipeRepositoryImpl(private val api: RecipeAPI) : RecipeRepository {
             val recipesResultDTO = api.getRecipes(token, page, query)
 
             //emit RecipeResult
-            emit(Resource.Success(data = recipesResultDTO.toRecipesResult()))
+            emit(Resource.Success(data = recipesResultDTO.toRecipesList()))
 
         }
 

@@ -1,17 +1,16 @@
 package com.uxstate.recipeapp.feature_recipe.data.remote.dto
 
 
-import com.squareup.moshi.Json
 import com.squareup.moshi.JsonClass
-import com.uxstate.recipeapp.feature_recipe.domain.model.RecipesResult
+import com.uxstate.recipeapp.feature_recipe.domain.model.RecipesList
 
 @JsonClass(generateAdapter = true)
-data class RecipesResultDTO(
+data class RecipesListDTO(
     val count: Int,
     val results: List<RecipeDTO>
 )
 
-fun RecipesResultDTO.toRecipesResult():RecipesResult{
+fun RecipesListDTO.toRecipesList():RecipesList{
 
-    return RecipesResult(count = count, results = results)
+    return RecipesList(count = count, results = results)
 }
