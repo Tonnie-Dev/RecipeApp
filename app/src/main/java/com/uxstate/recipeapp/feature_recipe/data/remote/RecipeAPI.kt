@@ -28,7 +28,13 @@ interface RecipeAPI {
 
 
     //search a single recipe
+@GET(value = "/get")
+suspend fun getRecipe(
+        @Header("Authorization")
+        token: String,
+        @Query("id")
+        id:Int
+):RecipeDTO
 
 
-   
 }
