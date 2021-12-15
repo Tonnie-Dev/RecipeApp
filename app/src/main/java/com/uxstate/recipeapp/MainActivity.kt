@@ -24,12 +24,14 @@ import androidx.compose.ui.unit.sp
 import com.squareup.moshi.Moshi
 import com.squareup.moshi.kotlin.reflect.KotlinJsonAdapterFactory
 import com.uxstate.recipeapp.feature_recipe.data.remote.RecipeAPI
+import com.uxstate.recipeapp.feature_recipe.domain.model.Recipe
 import com.uxstate.recipeapp.feature_recipe.presentation.ui.theme.RecipeAppTheme
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers.IO
 import kotlinx.coroutines.launch
 import retrofit2.Retrofit
 import retrofit2.converter.moshi.MoshiConverterFactory
+import timber.log.Timber
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -53,6 +55,9 @@ class MainActivity : ComponentActivity() {
                     .create(RecipeAPI::class.java)
 
             //get recipe
+            val recipe = recipeAPI.getRecipe(RecipeAPI.AUTH_TOKEN, 33)
+
+            Timber.i("The found Recipe 33 is $recipe")
 
         }
 
