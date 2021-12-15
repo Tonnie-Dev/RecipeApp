@@ -17,7 +17,7 @@ interface RecipeAPI {
 
     //search all recipes
     @GET(value = "api/recipe/search")
-    suspend fun searchRecipes(
+    suspend fun getRecipes(
         @Header("Authorization")
         token: String,
         @Query("page")
@@ -29,7 +29,7 @@ interface RecipeAPI {
 
     //search a single recipe
     @GET(value = "api/recipe/get")
-    suspend fun getRecipe(
+    suspend fun getRecipeById(
         @Header("Authorization")
         token: String,
         @Query("id")
