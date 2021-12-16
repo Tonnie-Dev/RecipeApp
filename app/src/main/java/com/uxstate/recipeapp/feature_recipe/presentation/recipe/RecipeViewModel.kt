@@ -16,6 +16,12 @@ class RecipeViewModel @Inject constructor(private val useCase: GetRecipeByIdUseC
 
     var recipeState = mutableStateOf(RecipeState())
         private set
+    
+    init {
+        //call getRecipe()
+        // TODO: 16-Dec-21  
+        //getRecipe()
+    }
 
 
     fun getRecipe(id: Int, token: String) {
