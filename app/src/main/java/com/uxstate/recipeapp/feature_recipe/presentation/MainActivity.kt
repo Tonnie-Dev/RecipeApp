@@ -20,7 +20,7 @@ class MainActivity() : ComponentActivity() {
         super.onCreate(savedInstanceState)
 
 
-
+/*
         CoroutineScope(IO).launch {
 
             //build moshi
@@ -36,12 +36,12 @@ class MainActivity() : ComponentActivity() {
                     .build()
                     .create(RecipeAPI::class.java)
 
-          /*  //get recipe
+          *//*  //get recipe
             val recipe = recipeAPI.getRecipeById(RecipeAPI.AUTH_TOKEN, 583)
 
             Timber.i("The found Recipe 33 is $recipe")*/
 
-        }
+        }}
 
 
         /* setContent {
@@ -52,8 +52,7 @@ class MainActivity() : ComponentActivity() {
                  }
              }
          }*/
-    }
-}
+
 /*
 @Composable
 fun Greeting(name: String) {
