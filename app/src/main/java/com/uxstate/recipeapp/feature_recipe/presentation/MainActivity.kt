@@ -34,7 +34,7 @@ class MainActivity : ComponentActivity() {
                     .create(RecipeAPI::class.java)
 
             //get recipe
-            val recipe = recipeAPI.getRecipe(RecipeAPI.AUTH_TOKEN, 583)
+            val recipe = recipeAPI.getRecipeById(RecipeAPI.AUTH_TOKEN, 583)
 
             Timber.i("The found Recipe 33 is $recipe")
 

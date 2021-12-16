@@ -30,10 +30,6 @@ class RecipeRepositoryImpl(private val api: RecipeAPI) : RecipeRepository {
             val recipeList = recipeListDTO.toRecipeList()
 
             emit(Resource.Success(data = recipeList.results))
-          /*  val recipesListDTO = api.getRecipes(token, page, query)
-
-            //emit RecipeResult
-            emit(Resource.Success(data = recipesListDTO.toRecipeList()))*/
 
         }
 
