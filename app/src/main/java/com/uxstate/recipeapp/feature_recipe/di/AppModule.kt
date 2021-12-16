@@ -6,6 +6,7 @@ import com.uxstate.recipeapp.feature_recipe.data.remote.RecipeAPI
 import com.uxstate.recipeapp.feature_recipe.data.remote.repository.RecipeRepositoryImpl
 import com.uxstate.recipeapp.feature_recipe.domain.repository.RecipeRepository
 import com.uxstate.recipeapp.feature_recipe.domain.use_cases.GetRecipeByIdUseCase
+import com.uxstate.recipeapp.feature_recipe.domain.use_cases.GetRecipesUseCase
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -48,11 +49,15 @@ object AppModule {
 
 
     @Provides
-    fun providesGetRecipeByIdUseCase(repository:RecipeRepository):GetRecipeByIdUseCase{
+    fun provideGetRecipeByIdUseCase(repository:RecipeRepository):GetRecipeByIdUseCase{
 
         return GetRecipeByIdUseCase(repository = repository)
     }
 
     @Provides
-    fun provide
+    fun provideGetRecipesUseCase(repository:RecipeRepository):GetRecipesUseCase{
+
+
+        return GetRecipesUseCase(repository = repository)
+    }
 }
