@@ -2,21 +2,28 @@ package com.uxstate.recipeapp.feature_recipe.presentation.recipe
 
 import androidx.compose.runtime.mutableStateOf
 import androidx.lifecycle.ViewModel
+import androidx.lifecycle.viewModelScope
 import com.uxstate.recipeapp.core.util.Resource
 import com.uxstate.recipeapp.feature_recipe.domain.use_cases.GetRecipeByIdUseCase
 import com.uxstate.recipeapp.feature_recipe.presentation.recipe.components.RecipeState
 import dagger.hilt.android.lifecycle.HiltViewModel
+import kotlinx.coroutines.flow.launchIn
 import kotlinx.coroutines.flow.onEach
 import javax.inject.Inject
+import javax.inject.Named
 
 
 @HiltViewModel
-class RecipeViewModel @Inject constructor(private val useCase: GetRecipeByIdUseCase) : ViewModel() {
+class RecipeViewModel @Inject constructor(
+    private val useCase: GetRecipeByIdUseCase,
+    @Named("auth_token") private val token: String
+) : ViewModel() {
 
 
     var recipeState = mutableStateOf(RecipeState())
         private set
-    
+
+
     init {
         //call getRecipe()
         // TODO: 16-Dec-21  
@@ -63,7 +70,7 @@ class RecipeViewModel @Inject constructor(private val useCase: GetRecipeByIdUseC
                 }
             }
 
-        }
+        }.launchIn(viewModelScope)
     }
 
 

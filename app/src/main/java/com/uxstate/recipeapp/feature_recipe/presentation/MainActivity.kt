@@ -36,10 +36,10 @@ class MainActivity() : ComponentActivity() {
                     .build()
                     .create(RecipeAPI::class.java)
 
-            //get recipe
+          /*  //get recipe
             val recipe = recipeAPI.getRecipeById(RecipeAPI.AUTH_TOKEN, 583)
 
-            Timber.i("The found Recipe 33 is $recipe")
+            Timber.i("The found Recipe 33 is $recipe")*/
 
         }
 
