@@ -19,6 +19,8 @@ private set
 
     init {
         TODO()
+
+        getRecipes()
     }
 
     //get recipes
