@@ -3,6 +3,7 @@ package com.uxstate.recipeapp.feature_recipe.presentation.recipe_list
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
+import androidx.compose.foundation.lazy.itemsIndexed
 import androidx.compose.material.CircularProgressIndicator
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Text
@@ -33,11 +34,10 @@ fun RecipesListScreen(
 
         LazyColumn(modifier = Modifier.fillMaxSize()) {
 
-            items(items = listState.recipes){
-                recipe ->
+          itemsIndexed(items = listState.recipes){i,recipe ->
 
-                RecipeCard(recipe = recipe, onClick = {})
-            }
+              RecipeCard(recipe = recipe) {}
+          }
 
         }
 
