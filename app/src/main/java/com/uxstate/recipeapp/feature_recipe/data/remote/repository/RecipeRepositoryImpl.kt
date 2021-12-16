@@ -29,7 +29,7 @@ class RecipeRepositoryImpl(private val api: RecipeAPI) : RecipeRepository {
 
             val recipeList = recipeListDTO.toRecipeList()
 
-            emit(Resource.Success(data = recipeList.results))
+            emit(Resource.Success(data = recipeList.recipes))
 
         }
 
