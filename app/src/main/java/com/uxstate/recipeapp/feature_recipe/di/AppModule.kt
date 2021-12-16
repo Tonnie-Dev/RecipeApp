@@ -13,6 +13,7 @@ import dagger.hilt.InstallIn
 import dagger.hilt.components.SingletonComponent
 import retrofit2.Retrofit
 import retrofit2.converter.moshi.MoshiConverterFactory
+import javax.inject.Named
 import javax.inject.Singleton
 
 @Module
@@ -63,5 +64,14 @@ object AppModule {
 
 
         return GetRecipesUseCase(repository = repository)
+    }
+
+    @Provides
+    @Singleton
+    @Named("auth_token") // for differentiating types e.g. String
+
+    fun provideAuthToken():String{
+
+        return "Token 9c8b06d329136da358c2d00e76946b0111ce2c48"
     }
 }
