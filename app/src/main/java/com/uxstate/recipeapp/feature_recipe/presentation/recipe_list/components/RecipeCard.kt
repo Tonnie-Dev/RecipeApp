@@ -8,6 +8,7 @@ import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
+import androidx.compose.ui.Alignment.Companion.CenterVertically
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
@@ -30,7 +31,7 @@ fun RecipeCard(recipe: Recipe, onClick: () -> Unit) {
     ) {
 
 
-        Column(modifier = Modifier.fillMaxHeight()) {
+        Column() {
 
             Image(
                 painter = painterResource(id = R.drawable.empty_plate),
@@ -55,7 +56,14 @@ fun RecipeCard(recipe: Recipe, onClick: () -> Unit) {
                     style = MaterialTheme.typography.h5
 
                 )
-                Text(text = recipe.rating.toString())
+                Text(
+                    text = recipe.rating.toString(),
+                    style = MaterialTheme.typography.h6,
+                    textAlign = TextAlign.End,
+                    modifier = Modifier
+                            .fillMaxWidth()
+                            .align(CenterVertically)
+                )
             }
 
 
