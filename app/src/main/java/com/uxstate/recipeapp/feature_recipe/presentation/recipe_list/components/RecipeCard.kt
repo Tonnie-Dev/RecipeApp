@@ -11,6 +11,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.uxstate.recipeapp.R
@@ -29,7 +30,7 @@ fun RecipeCard(recipe: Recipe, onClick: () -> Unit) {
     ) {
 
 
-        Column (modifier = Modifier.fillMaxHeight()){
+        Column(modifier = Modifier.fillMaxHeight()) {
 
             Image(
                 painter = painterResource(id = R.drawable.empty_plate),
@@ -40,16 +41,25 @@ fun RecipeCard(recipe: Recipe, onClick: () -> Unit) {
             )
 
 
-            Row (horizontalArrangement = Arrangement.SpaceBetween, modifier = Modifier.fillMaxWidth().padding(horizontal = 8.dp, vertical = 12.dp)){
+            Row(
+                horizontalArrangement = Arrangement.SpaceBetween,
+                modifier = Modifier
+                        .fillMaxWidth()
+                        .padding(horizontal = 8.dp, vertical = 12.dp)
+            ) {
 
-                Text(text = recipe.title)
+                Text(
+                    text = recipe.title,
+                    textAlign = TextAlign.Start,
+                    modifier = Modifier.fillMaxWidth(0.85f),
+                    style = MaterialTheme.typography.h5
+
+                )
                 Text(text = recipe.rating.toString())
             }
 
 
         }
-
-
 
 
     }
