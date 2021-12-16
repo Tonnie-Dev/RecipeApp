@@ -15,6 +15,11 @@ class RecipesListViewModel @Inject constructor(private val useCase: GetRecipesUs
 
 //State
     var recipesListState = mutableStateOf(RecipesListState())
+private set
+
+    init {
+        TODO()
+    }
 
     //get recipes
     fun getRecipes(
@@ -64,4 +69,3 @@ class RecipesListViewModel @Inject constructor(private val useCase: GetRecipesUs
 
 
     }
-}
