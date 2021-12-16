@@ -26,8 +26,7 @@ class RecipesListViewModel @Inject constructor(
 
     init {
 
-// TODO: 16-Dec-21 missing query, token page
-       // getRecipes()
+ getRecipes(token = token, page = 1, query = "chicken")
     }
 
     //get recipes
