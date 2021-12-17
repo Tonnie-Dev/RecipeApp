@@ -5,7 +5,6 @@ import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.itemsIndexed
 import androidx.compose.material.CircularProgressIndicator
 import androidx.compose.material.MaterialTheme
-import androidx.compose.material.Surface
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
@@ -32,25 +31,25 @@ fun RecipesOverviewScreen(
     val query by viewModel.query
 
 
-
     //add containing column
 
     Box(modifier = Modifier.fillMaxSize()) {
         Column {
-           SearchTextField(
-                    value = query,
-                    onValueChanged = viewModel::onSearchQueryChange,
-               onImeAction = viewModel::getRecipes,
-               onClearTextField = viewModel::onClearTextField
-                )
-                LazyColumn() {
+            SearchTextField(
+                value = query,
+                onValueChanged = viewModel::onSearchQueryChange,
+                onImeAction = viewModel::getRecipes,
+                onClearTextField = viewModel::onClearTextField,
+                modifier = Modifier.fillMaxWidth(0.8f)
+            )
+            LazyColumn() {
 
-                    itemsIndexed(items = listState.recipes) { i, recipe ->
+                itemsIndexed(items = listState.recipes) { i, recipe ->
 
-                        RecipeCard(recipe = recipe) {}
-                    }
-
+                    RecipeCard(recipe = recipe) {}
                 }
+
+            }
 
         }
 

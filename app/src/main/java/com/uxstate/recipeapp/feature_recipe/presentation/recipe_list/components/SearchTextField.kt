@@ -2,6 +2,7 @@ package com.uxstate.recipeapp.feature_recipe.presentation.recipe_list.components
 
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.text.KeyboardActions
 import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material.*
@@ -30,7 +31,7 @@ onClearTextField:()-> Unit
     Surface(
         elevation = 8.dp,
         modifier = Modifier.fillMaxWidth(),
-        color = MaterialTheme.colors.surface
+        color = MaterialTheme.colors.primary
     ) {
 
         TextField(
@@ -38,7 +39,7 @@ onClearTextField:()-> Unit
             onValueChange = onValueChanged,
 
             //occupy 95% of max width to menu space
-            modifier.fillMaxWidth(0.95f),
+            modifier.fillMaxWidth(0.6f).padding(8.dp),
 
             label = { Text(text = "search") },
 
