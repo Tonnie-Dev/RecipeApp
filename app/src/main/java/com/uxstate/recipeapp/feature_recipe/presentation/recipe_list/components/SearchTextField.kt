@@ -12,6 +12,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.ExperimentalComposeUiApi
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalSoftwareKeyboardController
+import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.input.ImeAction
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.unit.dp
@@ -63,7 +64,9 @@ onClearTextField:()-> Unit
                     onImeAction(value)
                     keyboardController?.hide()
 
-                })
+                }),
+            
+            textStyle = TextStyle(color = MaterialTheme.colors.onSurface)
 
         )
 
