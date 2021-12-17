@@ -10,6 +10,7 @@ import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
+import androidx.compose.ui.ExperimentalComposeUiApi
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
@@ -18,6 +19,7 @@ import androidx.navigation.NavController
 import com.uxstate.recipeapp.feature_recipe.presentation.recipe_list.components.RecipeCard
 import com.uxstate.recipeapp.feature_recipe.presentation.recipe_list.components.SearchTextField
 
+@ExperimentalComposeUiApi
 @Composable
 fun RecipesOverviewScreen(
     navController: NavController,
@@ -37,7 +39,8 @@ fun RecipesOverviewScreen(
         Column {
            SearchTextField(
                     value = query,
-                    onValueChanged = viewModel::onSearchQueryChange
+                    onValueChanged = viewModel::onSearchQueryChange,
+               onImeAction = viewModel::getRecipes
                 )
                 LazyColumn() {
 

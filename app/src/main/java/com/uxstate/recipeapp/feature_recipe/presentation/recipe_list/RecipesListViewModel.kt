@@ -29,18 +29,17 @@ class RecipesListViewModel @Inject constructor(
 
     init {
 
-        getRecipes(token = token)
+        getRecipes(query.value)
     }
 
     //get recipes
-    private fun getRecipes(
-        token: String,
-        page: Int = 1,
+ fun getRecipes(
+
         query: String = "Chicken"
     ) {
 
         //listen to flow emissions from usecase using onEach{}
-        useCase(token = token, page = page, query = query).onEach {
+        useCase(token = token, page = 1, query = query).onEach {
 
                 emission ->
             //modify state according to the emission
@@ -86,6 +85,11 @@ class RecipesListViewModel @Inject constructor(
 
         query.value = text
 
+    }
+
+    fun onClearTextField(){
+
+        query.value = ""
     }
 
 

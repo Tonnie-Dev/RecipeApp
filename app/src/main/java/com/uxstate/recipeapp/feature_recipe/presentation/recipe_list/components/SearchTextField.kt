@@ -20,18 +20,15 @@ fun SearchTextField(
     modifier: Modifier = Modifier,
     value: String,
     onValueChanged: (String) -> Unit,
-    onImeAction: () -> Unit = {},
-
+    onImeAction: (String) -> Unit = {},
+onClearTextField:()-> Unit
     ) {
-
-
     val keyboardController = LocalSoftwareKeyboardController.current
     Surface(
         elevation = 8.dp,
         modifier = Modifier.fillMaxWidth(),
         color = MaterialTheme.colors.surface
     ) {
-
 
         TextField(
             value = value,
@@ -47,7 +44,6 @@ fun SearchTextField(
                 imeAction = ImeAction.Search
             ),
 
-
             leadingIcon = {
 
                 Icon(imageVector = Icons.Filled.Search, contentDescription = null)
@@ -55,7 +51,7 @@ fun SearchTextField(
 
             keyboardActions = KeyboardActions(
                 onSearch = {
-                    onImeAction()
+                    onImeAction(value)
                     keyboardController?.hide()
 
                 })
