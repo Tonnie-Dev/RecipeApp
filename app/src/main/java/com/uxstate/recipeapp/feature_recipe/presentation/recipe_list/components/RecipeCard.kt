@@ -15,6 +15,7 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import coil.compose.rememberImagePainter
 import com.uxstate.recipeapp.R
 import com.uxstate.recipeapp.feature_recipe.domain.model.Recipe
 
@@ -32,14 +33,28 @@ fun RecipeCard(recipe: Recipe, onClick: () -> Unit) {
 
 
         Column() {
-
+            
+            
+            
             Image(
+                painter = rememberImagePainter(
+                    data = recipe.featuredImage,
+                    builder = { crossfade(true)
+                    placeholder(R.drawable.empty_plate)}
+                ),
+
+                modifier = Modifier.fillMaxWidth().height(225.dp),
+                contentScale = ContentScale.Crop,
+                contentDescription = null
+            )
+
+            /*Image(
                 painter = painterResource(id = R.drawable.empty_plate),
                 contentScale = ContentScale.Crop,
                 contentDescription = null,
-                modifier = Modifier.height(225.dp),
-                alignment = Alignment.TopCenter
-            )
+                modifier = Modifier.height(225.dp)
+
+            )*/
 
 
             Row(
