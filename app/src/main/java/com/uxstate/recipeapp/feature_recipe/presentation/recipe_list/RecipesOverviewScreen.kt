@@ -24,7 +24,7 @@ fun RecipesOverviewScreen(
 ) {
 
 
-    //get state from viewModel
+    //get states from viewModel
     val listState by viewModel.recipesListState
 
 

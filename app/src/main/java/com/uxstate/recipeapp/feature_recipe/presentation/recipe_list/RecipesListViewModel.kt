@@ -82,4 +82,11 @@ class RecipesListViewModel @Inject constructor(
     }
 
 
+    fun onSearchQueryChange(text: String) {
+
+        query.value = text
+
+    }
+
+
 }
