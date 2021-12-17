@@ -1,9 +1,6 @@
 package com.uxstate.recipeapp.feature_recipe.presentation.recipe_list
 
-import androidx.compose.foundation.layout.Box
-import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.itemsIndexed
 import androidx.compose.material.CircularProgressIndicator
@@ -31,19 +28,24 @@ fun RecipesOverviewScreen(
     val listState by viewModel.recipesListState
     val query by viewModel.query
 
-    SearchTextField(value = query, onValueChanged = viewModel::onSearchQueryChange)
+
 
     //add containing column
 
     Box(modifier = Modifier.fillMaxSize()) {
+        Column {
+            SearchTextField(
+                value = query,
+                onValueChanged = viewModel::onSearchQueryChange
+            )
+            LazyColumn() {
 
-        LazyColumn(modifier = Modifier.fillMaxSize()) {
+                itemsIndexed(items = listState.recipes) { i, recipe ->
 
-            itemsIndexed(items = listState.recipes) { i, recipe ->
+                    RecipeCard(recipe = recipe) {}
+                }
 
-                RecipeCard(recipe = recipe) {}
             }
-
         }
 
         if (listState.loading) {

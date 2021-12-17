@@ -24,7 +24,7 @@ class RecipesListViewModel @Inject constructor(
         private set
 
     //search query state
-    var query = mutableStateOf("")
+    var query = mutableStateOf("Chicken")
         private set
 
     init {

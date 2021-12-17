@@ -6,9 +6,9 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 
 @Composable
-fun SearchTextField(value: String, onValueChanged: (String) -> Unit) {
+fun SearchTextField(value: String, onValueChanged: (String) -> Unit, modifier: Modifier=Modifier) {
 
 
-    TextField(value = value, onValueChange = onValueChanged, modifier = Modifier.fillMaxWidth())
+    TextField(value = value, onValueChange = onValueChanged, modifier.fillMaxWidth())
 
 }
