@@ -66,7 +66,14 @@ onClearTextField:()-> Unit
 
                 }),
             
-            textStyle = TextStyle(color = MaterialTheme.colors.onSurface)
+            textStyle = TextStyle(color = MaterialTheme.colors.onSurface),
+
+            colors = TextFieldDefaults.textFieldColors(
+                
+                backgroundColor = MaterialTheme.colors.surface,
+                leadingIconColor = MaterialTheme.colors.primaryVariant,
+                trailingIconColor = MaterialTheme.colors.primaryVariant
+            )
 
         )
 
