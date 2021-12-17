@@ -18,7 +18,7 @@ import androidx.navigation.NavController
 import com.uxstate.recipeapp.feature_recipe.presentation.recipe_list.components.RecipeCard
 
 @Composable
-fun RecipesListScreen(
+fun RecipesOverviewScreen(
     navController: NavController,
     viewModel: RecipesListViewModel = hiltViewModel()
 ) {

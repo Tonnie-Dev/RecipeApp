@@ -4,7 +4,9 @@ import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.navigation.compose.NavHost
+import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
+import com.uxstate.recipeapp.feature_recipe.presentation.recipe_list.RecipesOverviewScreen
 import com.uxstate.recipeapp.feature_recipe.presentation.ui.theme.RecipeAppTheme
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -19,7 +21,17 @@ class MainActivity() : ComponentActivity() {
 
                 val navController = rememberNavController()
 
-                NavHost(navController = navController, startDestination =Screens., builder =)
+                NavHost(
+                    navController = navController,
+                    startDestination = Screens.RecipesOverviewScreen.route
+                ) {
+                    composable(route = Screens.RecipesOverviewScreen.route) {
+
+
+                        RecipesOverviewScreen(navController = navController)
+                    }
+
+                }
             }
         }
     }
