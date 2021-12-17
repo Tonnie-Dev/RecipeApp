@@ -16,7 +16,7 @@ class GetRecipesUseCase (private val repository: RecipeRepository){
                           query: String): Flow<Resource<List<Recipe>>> {
 
 
-                              repository.getRecipes(token, page, query)
+                           return   repository.getRecipes(token, page, query)
     }
 
 }
