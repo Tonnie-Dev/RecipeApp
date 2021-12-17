@@ -1,8 +1,10 @@
 package com.uxstate.recipeapp.feature_recipe.presentation.recipe_list.components
 
+import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Surface
+import androidx.compose.material.Text
 import androidx.compose.material.TextField
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
@@ -14,15 +16,27 @@ fun SearchTextField(
     onValueChanged: (String) -> Unit,
     modifier: Modifier = Modifier
 ) {
-    Surface(
+  Surface(
         elevation = 8.dp,
         modifier = Modifier.fillMaxWidth(),
-        color = MaterialTheme.colors.onSurface
+        color = MaterialTheme.colors.surface
     ) {
-        TextField(value = value, onValueChange = onValueChanged, modifier.fillMaxWidth())
+
+
+      TextField(
+          value = value,
+          onValueChange = onValueChanged,
+
+          //occupy 95% of max width to menu space
+          modifier.fillMaxWidth(0.95f),
+
+          label = {Text(text = "search")}
+      )
+
+  }
     }
 
-}
+
 
    
 
