@@ -5,7 +5,6 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.uxstate.recipeapp.core.util.Resource
 import com.uxstate.recipeapp.feature_recipe.domain.use_cases.GetRecipesUseCase
-import com.uxstate.recipeapp.feature_recipe.presentation.recipe_list.RecipesListState
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.launchIn
 import kotlinx.coroutines.flow.onEach
@@ -16,23 +15,27 @@ import javax.inject.Named
 @HiltViewModel
 class RecipesListViewModel @Inject constructor(
     private val useCase: GetRecipesUseCase,
-    @Named("auth_token")private val token: String
+    @Named("auth_token") private val token: String
 ) :
     ViewModel() {
 
-    //State
+    //list state
     var recipesListState = mutableStateOf(RecipesListState())
+        private set
+
+    //search query state
+    var query = mutableStateOf("")
         private set
 
     init {
 
- getRecipes(token = token)
+        getRecipes(token = token)
     }
 
     //get recipes
     private fun getRecipes(
         token: String,
-        page: Int =1,
+        page: Int = 1,
         query: String = "Chicken"
     ) {
 
@@ -73,7 +76,8 @@ class RecipesListViewModel @Inject constructor(
 
             }
 
-        }.launchIn(viewModelScope)
+        }
+                .launchIn(viewModelScope)
 
     }
 
