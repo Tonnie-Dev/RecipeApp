@@ -40,7 +40,8 @@ fun RecipesOverviewScreen(
            SearchTextField(
                     value = query,
                     onValueChanged = viewModel::onSearchQueryChange,
-               onImeAction = viewModel::getRecipes
+               onImeAction = viewModel::getRecipes,
+               onClearTextField = viewModel::onClearTextField
                 )
                 LazyColumn() {
 

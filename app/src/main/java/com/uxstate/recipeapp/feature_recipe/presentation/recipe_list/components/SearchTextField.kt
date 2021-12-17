@@ -1,10 +1,12 @@
 package com.uxstate.recipeapp.feature_recipe.presentation.recipe_list.components
 
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.text.KeyboardActions
 import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material.*
 import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.Clear
 import androidx.compose.material.icons.filled.Search
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.ExperimentalComposeUiApi
@@ -48,6 +50,13 @@ onClearTextField:()-> Unit
 
                 Icon(imageVector = Icons.Filled.Search, contentDescription = null)
             },
+
+
+            trailingIcon = {
+
+                           Icon(imageVector = Icons.Filled.Clear, contentDescription = null, modifier = Modifier.clickable { onClearTextField() })
+            },
+
 
             keyboardActions = KeyboardActions(
                 onSearch = {
