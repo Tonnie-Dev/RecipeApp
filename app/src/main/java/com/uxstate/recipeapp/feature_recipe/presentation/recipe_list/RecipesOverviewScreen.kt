@@ -1,8 +1,10 @@
 package com.uxstate.recipeapp.feature_recipe.presentation.recipe_list
 
-import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
-import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.lazy.itemsIndexed
 import androidx.compose.material.CircularProgressIndicator
 import androidx.compose.material.MaterialTheme
@@ -16,6 +18,7 @@ import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavController
 import com.uxstate.recipeapp.feature_recipe.presentation.recipe_list.components.RecipeCard
+import com.uxstate.recipeapp.feature_recipe.presentation.recipe_list.components.SearchTextField
 
 @Composable
 fun RecipesOverviewScreen(
@@ -26,7 +29,9 @@ fun RecipesOverviewScreen(
 
     //get states from viewModel
     val listState by viewModel.recipesListState
+    val query by viewModel.query
 
+    SearchTextField(value = query, onValueChanged = viewModel::onSearchQueryChange)
 
     //add containing column
 
@@ -34,19 +39,19 @@ fun RecipesOverviewScreen(
 
         LazyColumn(modifier = Modifier.fillMaxSize()) {
 
-          itemsIndexed(items = listState.recipes){i,recipe ->
+            itemsIndexed(items = listState.recipes) { i, recipe ->
 
-              RecipeCard(recipe = recipe) {}
-          }
+                RecipeCard(recipe = recipe) {}
+            }
 
         }
 
-        if (listState.loading){
+        if (listState.loading) {
 
             CircularProgressIndicator(modifier = Modifier.align(Alignment.Center))
         }
 
-        if (listState.error.isNotEmpty()){
+        if (listState.error.isNotEmpty()) {
             Text(
                 text = listState.error,
                 color = MaterialTheme.colors.error,
@@ -54,10 +59,11 @@ fun RecipesOverviewScreen(
                 modifier = Modifier
                         .fillMaxWidth()
                         .padding(20.dp)
-                        .align(Alignment.Center))
+                        .align(Alignment.Center)
+            )
         }
 
-
-        }
 
     }
+
+}
