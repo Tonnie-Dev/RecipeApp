@@ -26,14 +26,14 @@ class RecipesListViewModel @Inject constructor(
 
     init {
 
- getRecipes(token = token, page = 1, query = "chicken")
+ getRecipes(token = token)
     }
 
     //get recipes
-    fun getRecipes(
+    private fun getRecipes(
         token: String,
-        page: Int,
-        query: String
+        page: Int =1,
+        query: String = "Chicken"
     ) {
 
         //listen to flow emissions from usecase using onEach{}
