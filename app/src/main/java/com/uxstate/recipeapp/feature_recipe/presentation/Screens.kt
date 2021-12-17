@@ -1,8 +1,7 @@
 package com.uxstate.recipeapp.feature_recipe.presentation
 
-sealed class Screens(val route:String){
+sealed class Screens(val route: String) {
 
-
-    class RECIPES_OVERVIEW_SCREEN(route: String):Screens(route = route)
-    class RECIPE_DETAILS_SCREEN(route: String):Screens(route = route)
+    object RecipesOverviewScreen : Screens("recipe_overview_screen")
+    object RecipeDetailsScreen : Screens("recipe_details_screen")
 }

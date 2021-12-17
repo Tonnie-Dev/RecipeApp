@@ -19,7 +19,7 @@ class MainActivity() : ComponentActivity() {
 
                 val navController = rememberNavController()
 
-                NavHost(navController =, startDestination =, builder =)
+                NavHost(navController = navController, startDestination =Screens., builder =)
             }
         }
     }
