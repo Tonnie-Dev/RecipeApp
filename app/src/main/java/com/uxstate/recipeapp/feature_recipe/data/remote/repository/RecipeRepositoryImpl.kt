@@ -12,7 +12,7 @@ import retrofit2.HttpException
 import java.io.IOException
 
 class RecipeRepositoryImpl(private val api: RecipeAPI) : RecipeRepository {
-    override suspend fun getRecipes(
+    override fun getRecipes(
         token: String,
         page: Int,
         query: String
@@ -52,7 +52,7 @@ class RecipeRepositoryImpl(private val api: RecipeAPI) : RecipeRepository {
     }
 
 
-    override suspend fun getRecipeById(token: String, id: Int): Flow<Resource<Recipe>> = flow {
+    override  fun getRecipeById(token: String, id: Int): Flow<Resource<Recipe>> = flow {
 
         //emit loading status initially
         emit(Resource.Loading())

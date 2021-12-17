@@ -13,7 +13,7 @@ class GetRecipesUseCase (private val repository: RecipeRepository){
 
     operator fun invoke(  token: String,
                           page: Int,
-                          query: String): Flow<Resource<List<Recipe>>> = flow {
+                          query: String): Flow<Resource<List<Recipe>>> {
 
 
                               repository.getRecipes(token, page, query)
