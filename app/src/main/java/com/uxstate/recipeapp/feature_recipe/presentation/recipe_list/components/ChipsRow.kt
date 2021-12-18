@@ -14,7 +14,8 @@ import com.uxstate.recipeapp.feature_recipe.presentation.recipe_list.FoodCategor
 fun ChipsRow(
     modifier: Modifier = Modifier,
     categories: List<FoodCategory>,
-    scrollState: ScrollState
+    scrollState: ScrollState,
+    onExecuteSearch:(String)-> Unit
 ) {
 
 
@@ -26,7 +27,7 @@ fun ChipsRow(
 
         for (category in categories){
 
-            Text(text = category.value)
+            FoodCategoryChip(category = category.value) { onExecuteSearch(category.value) }
         }
 
 
