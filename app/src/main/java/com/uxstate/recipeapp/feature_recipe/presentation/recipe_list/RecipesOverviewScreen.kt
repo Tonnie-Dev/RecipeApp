@@ -59,7 +59,11 @@ val categories = FoodCategory.values().toList()
                 ChipsRow(
                     categories = categories,
                     scrollState = scrollState,
-                    onExecuteSearch =  viewModel::getRecipes
+                    onExecuteSearch =  {
+
+                        viewModel.getRecipes(it)
+                    viewModel.onSearchQueryChange(it)
+                    }
                 )
                 LazyColumn() {
 

@@ -28,7 +28,7 @@ fun FoodCategoryChip(category: String, onExecuteSearch: (String) -> Unit) {
                 color = Color.White,
                 modifier = Modifier.padding(8.dp).clickable { onExecuteSearch(category) }
             )
-        
+
     }
 
 
