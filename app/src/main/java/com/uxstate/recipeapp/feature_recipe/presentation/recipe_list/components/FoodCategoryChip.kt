@@ -1,5 +1,6 @@
 package com.uxstate.recipeapp.feature_recipe.presentation.recipe_list.components
 
+import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.selection.toggleable
 import androidx.compose.material.MaterialTheme
@@ -25,18 +26,20 @@ fun FoodCategoryChip(
     ) {
 
 
-        Text(
-            text = category,
-            style = MaterialTheme.typography.body2,
-            color = Color.White,
-            modifier = Modifier
-                    .padding(8.dp)
-                    .toggleable(value = isSelected, onValueChange = {
+        Row (modifier = Modifier.toggleable(value = isSelected, onValueChange = {
 
-                        onSelectedCategoryChange(category)
-                        onExecuteSearch()
-                    })
-        )
+            onSelectedCategoryChange(category)
+            onExecuteSearch()
+        })){
+            Text(
+                text = category,
+                style = MaterialTheme.typography.body2,
+                color = Color.White,
+                modifier = Modifier
+                        .padding(8.dp)
+                        
+            )
+        }
 
     }
 
