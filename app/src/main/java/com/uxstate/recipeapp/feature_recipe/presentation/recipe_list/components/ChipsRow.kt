@@ -4,8 +4,10 @@ import androidx.compose.foundation.ScrollState
 import androidx.compose.foundation.horizontalScroll
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.padding
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.unit.dp
 import com.uxstate.recipeapp.feature_recipe.presentation.recipe_list.FoodCategory
 
 
@@ -23,6 +25,7 @@ fun ChipsRow(
     Row(
         modifier
                 .fillMaxWidth()
+                .padding(start = 8.dp, bottom = 8.dp)
                 .horizontalScroll(scrollState, enabled = true)
     ) {
 
