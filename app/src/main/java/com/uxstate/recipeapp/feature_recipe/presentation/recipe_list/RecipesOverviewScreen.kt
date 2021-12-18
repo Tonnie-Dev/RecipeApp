@@ -13,6 +13,7 @@ import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.ExperimentalComposeUiApi
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
@@ -44,7 +45,7 @@ val categories = FoodCategory.values().toList()
         Surface(
             elevation = 8.dp,
             modifier = Modifier.fillMaxWidth(),
-            color = MaterialTheme.colors.primary
+            color = Color.White
         ) {
             Column {
                 SearchTextField(
