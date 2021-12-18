@@ -16,19 +16,19 @@ fun FoodCategoryChip(category: String, onExecuteSearch: (String) -> Unit) {
     Surface(
         modifier = Modifier.padding(end = 8.dp),
         elevation = 8.dp,
-        shape = MaterialTheme.shapes.medium,
+        shape = MaterialTheme.shapes.small,
         color = MaterialTheme.colors.primary
     ) {
 
-        Row(modifier = Modifier.clickable { onExecuteSearch(category) }) {
+
 
             Text(
                 text = category,
                 style = MaterialTheme.typography.body2,
                 color = Color.White,
-                modifier = Modifier.padding(8.dp)
+                modifier = Modifier.padding(8.dp).clickable { onExecuteSearch(category) }
             )
-        }
+        
     }
 
 
