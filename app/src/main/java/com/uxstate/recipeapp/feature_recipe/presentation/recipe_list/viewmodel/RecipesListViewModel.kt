@@ -1,11 +1,12 @@
 package com.uxstate.recipeapp.feature_recipe.presentation.recipe_list.viewmodel
 
+import androidx.compose.runtime.MutableState
 import androidx.compose.runtime.mutableStateOf
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.uxstate.recipeapp.core.util.Resource
 import com.uxstate.recipeapp.feature_recipe.domain.use_cases.GetRecipesUseCase
-import com.uxstate.recipeapp.feature_recipe.presentation.recipe_list.viewmodel.RecipesListState
+import com.uxstate.recipeapp.feature_recipe.presentation.recipe_list.FoodCategory
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.launchIn
 import kotlinx.coroutines.flow.onEach
@@ -28,13 +29,16 @@ class RecipesListViewModel @Inject constructor(
     var query = mutableStateOf("")
         private set
 
+    var selectedCategory: MutableState<FoodCategory?> = mutableStateOf(null)
+        private set
+
     init {
 
         getRecipes(query.value)
     }
 
     //get recipes
- fun getRecipes(
+    fun getRecipes(
 
         query: String = "Chicken"
     ) {
@@ -88,7 +92,7 @@ class RecipesListViewModel @Inject constructor(
 
     }
 
-    fun onClearTextField(){
+    fun onClearTextField() {
 
         query.value = ""
     }
