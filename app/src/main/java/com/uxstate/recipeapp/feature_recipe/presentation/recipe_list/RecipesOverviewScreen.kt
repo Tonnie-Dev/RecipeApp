@@ -37,7 +37,7 @@ fun RecipesOverviewScreen(
     val categories = FoodCategory.values()
             .toList()
     val scrollState = rememberScrollState()
-    //retrieve selected category from the viewmodel
+    //retrieve selected category from the viewModel
     val selectedCategory by viewModel.selectedCategory
 
     //add containing column
