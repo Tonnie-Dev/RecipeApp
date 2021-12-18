@@ -97,6 +97,8 @@ class RecipesListViewModel @Inject constructor(
         val newCategory = getFoodCategory(category)
 
         selectedCategory.value = newCategory
+
+        //call search with new category string
         onSearchQueryChange(category)
 
     }

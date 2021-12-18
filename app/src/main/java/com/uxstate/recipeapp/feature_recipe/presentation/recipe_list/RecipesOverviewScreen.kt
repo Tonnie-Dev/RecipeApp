@@ -34,8 +34,11 @@ fun RecipesOverviewScreen(
     //get states from viewModel
     val listState by viewModel.recipesListState
     val query by viewModel.query
-val categories = FoodCategory.values().toList()
+    val categories = FoodCategory.values()
+            .toList()
     val scrollState = rememberScrollState()
+    //retrieve selected category from the viewmodel
+    val selectedCategory by viewModel.selectedCategory
 
     //add containing column
 
@@ -59,10 +62,10 @@ val categories = FoodCategory.values().toList()
                 ChipsRow(
                     categories = categories,
                     scrollState = scrollState,
-                    onExecuteSearch =  {
+                    onExecuteSearch = {
 
                         viewModel.getRecipes(it)
-                    viewModel.onSearchQueryChange(it)
+                        viewModel.onSearchQueryChange(it)
                     }
                 )
                 LazyColumn() {
