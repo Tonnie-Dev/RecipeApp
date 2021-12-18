@@ -1,4 +1,4 @@
-package com.uxstate.recipeapp.feature_recipe.presentation.recipe
+package com.uxstate.recipeapp.feature_recipe.presentation.recipe.viewmodel
 
 import androidx.compose.runtime.mutableStateOf
 import androidx.lifecycle.ViewModel

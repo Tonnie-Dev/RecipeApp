@@ -1,6 +1,7 @@
 package com.uxstate.recipeapp.feature_recipe.presentation.recipe_list.components
 
 import androidx.compose.foundation.clickable
+import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.text.KeyboardActions
@@ -16,6 +17,7 @@ import androidx.compose.ui.platform.LocalSoftwareKeyboardController
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.input.ImeAction
 import androidx.compose.ui.text.input.KeyboardType
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 
 @ExperimentalComposeUiApi
@@ -34,51 +36,67 @@ onClearTextField:()-> Unit
         color = MaterialTheme.colors.primary
     ) {
 
-        TextField(
-            value = value,
-            onValueChange = onValueChanged,
+        Row {
+            TextField(
+                value = value,
+                onValueChange = onValueChanged,
 
-            //occupy 95% of max width to menu space
-            modifier.fillMaxWidth(0.6f).padding(8.dp),
+                //occupy 95% of max width to menu space
+                modifier
+                        .fillMaxWidth(0.9f)
+                        .padding(8.dp),
 
-            label = { Text(text = "search") },
+                label = { Text(text = "search") },
 
-            keyboardOptions = KeyboardOptions(
-                keyboardType = KeyboardType.Text,
-                imeAction = ImeAction.Search
-            ),
+                keyboardOptions = KeyboardOptions(
+                    keyboardType = KeyboardType.Text,
+                    imeAction = ImeAction.Search
+                ),
 
-            leadingIcon = {
+                leadingIcon = {
 
-                Icon(imageVector = Icons.Filled.Search, contentDescription = null)
-            },
-
-
-            trailingIcon = {
-
-                           Icon(imageVector = Icons.Filled.Clear, contentDescription = null, modifier = Modifier.clickable { onClearTextField() })
-            },
+                    Icon(imageVector = Icons.Filled.Search, contentDescription = null)
+                },
 
 
-            keyboardActions = KeyboardActions(
-                onSearch = {
-                    onImeAction(value)
-                    keyboardController?.hide()
+                trailingIcon = {
 
-                }),
-            
-            textStyle = TextStyle(color = MaterialTheme.colors.onSurface),
+                    Icon(
+                        imageVector = Icons.Filled.Clear,
+                        contentDescription = null,
+                        modifier = Modifier.clickable { onClearTextField() })
+                },
 
-            colors = TextFieldDefaults.textFieldColors(
-                
-                backgroundColor = MaterialTheme.colors.surface,
-                leadingIconColor = MaterialTheme.colors.primaryVariant,
-                trailingIconColor = MaterialTheme.colors.primaryVariant
+
+                keyboardActions = KeyboardActions(
+                    onSearch = {
+                        onImeAction(value)
+                        keyboardController?.hide()
+
+                    }),
+
+                textStyle = TextStyle(color = MaterialTheme.colors.onSurface),
+
+                colors = TextFieldDefaults.textFieldColors(
+
+                    backgroundColor = MaterialTheme.colors.surface,
+                    leadingIconColor = MaterialTheme.colors.primaryVariant,
+                    trailingIconColor = MaterialTheme.colors.primaryVariant
+                )
+
             )
-
-        )
+        }
 
     }
+}
+
+@ExperimentalComposeUiApi
+@Preview(name = "Preview SearchTextField")
+@Composable
+fun PreviewSearchTextField() {
+
+    SearchTextField(modifier = Modifier,"Tonnie",{},{},{})
+
 }
 
 

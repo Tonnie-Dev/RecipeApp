@@ -17,6 +17,7 @@ import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavController
 import com.uxstate.recipeapp.feature_recipe.presentation.recipe_list.components.RecipeCard
 import com.uxstate.recipeapp.feature_recipe.presentation.recipe_list.components.SearchTextField
+import com.uxstate.recipeapp.feature_recipe.presentation.recipe_list.viewmodel.RecipesListViewModel
 
 @ExperimentalComposeUiApi
 @Composable
@@ -40,7 +41,7 @@ fun RecipesOverviewScreen(
                 onValueChanged = viewModel::onSearchQueryChange,
                 onImeAction = viewModel::getRecipes,
                 onClearTextField = viewModel::onClearTextField,
-                modifier = Modifier.fillMaxWidth(0.8f)
+
             )
             LazyColumn() {
 
