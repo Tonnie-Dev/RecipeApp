@@ -11,7 +11,7 @@ import com.uxstate.recipeapp.feature_recipe.presentation.recipe_list.FoodCategor
 
 @Composable
 fun ChipsRow(
-    selectedCategory: FoodCategory,
+    selectedCategory: FoodCategory?,
     modifier: Modifier = Modifier,
     categories: List<FoodCategory>,
     scrollState: ScrollState,

@@ -26,7 +26,7 @@ fun SearchTextField(
     modifier: Modifier = Modifier,
     value: String,
     onValueChanged: (String) -> Unit,
-    onImeAction: (String) -> Unit = {},
+    onImeAction: () -> Unit = {},
 onClearTextField:()-> Unit
     ) {
     val keyboardController = LocalSoftwareKeyboardController.current
@@ -66,7 +66,7 @@ onClearTextField:()-> Unit
 
                 keyboardActions = KeyboardActions(
                     onSearch = {
-                        onImeAction(value)
+                        onImeAction()
                         keyboardController?.hide()
 
                     }),

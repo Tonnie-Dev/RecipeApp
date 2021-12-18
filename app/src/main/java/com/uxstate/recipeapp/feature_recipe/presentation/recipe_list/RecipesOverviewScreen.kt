@@ -60,13 +60,13 @@ fun RecipesOverviewScreen(
                     )
 
                 ChipsRow(
+                    selectedCategory = selectedCategory,
                     categories = categories,
                     scrollState = scrollState,
-                    onExecuteSearch = {
+                    onSelectedCategoryChange = viewModel::onSelectedCategoryChanged,
+                    onExecuteSearch = viewModel::getRecipes
 
-                        viewModel.getRecipes(it)
-                        viewModel.onSearchQueryChange(it)
-                    }
+
                 )
                 LazyColumn() {
 
