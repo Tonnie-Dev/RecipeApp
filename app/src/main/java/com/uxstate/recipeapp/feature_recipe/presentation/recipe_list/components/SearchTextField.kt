@@ -30,11 +30,7 @@ fun SearchTextField(
 onClearTextField:()-> Unit
     ) {
     val keyboardController = LocalSoftwareKeyboardController.current
-    Surface(
-        elevation = 8.dp,
-        modifier = Modifier.fillMaxWidth(),
-        color = MaterialTheme.colors.primary
-    ) {
+
 
         Row {
             TextField(
@@ -85,7 +81,7 @@ onClearTextField:()-> Unit
                 )
 
             )
-        }
+
 
     }
 }
