@@ -7,6 +7,7 @@ import androidx.lifecycle.viewModelScope
 import com.uxstate.recipeapp.core.util.Resource
 import com.uxstate.recipeapp.feature_recipe.domain.use_cases.GetRecipesUseCase
 import com.uxstate.recipeapp.feature_recipe.presentation.recipe_list.FoodCategory
+import com.uxstate.recipeapp.feature_recipe.presentation.recipe_list.getFoodCategory
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.launchIn
 import kotlinx.coroutines.flow.onEach
@@ -89,10 +90,21 @@ class RecipesListViewModel @Inject constructor(
 
     }
 
+
+    fun onSelectedCategoryChanged(category:String){
+
+        //get FoodCategory Enum
+        val newCategory = getFoodCategory(category)
+
+        selectedCategory.value = newCategory
+        onSearchQueryChange(category)
+
+    }
     fun onClearTextField() {
 
         query.value = ""
     }
+
 
 
 }
