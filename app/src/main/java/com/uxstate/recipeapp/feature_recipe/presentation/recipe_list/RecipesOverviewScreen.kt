@@ -3,6 +3,7 @@ package com.uxstate.recipeapp.feature_recipe.presentation.recipe_list
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.itemsIndexed
+import androidx.compose.foundation.rememberScrollState
 import androidx.compose.material.CircularProgressIndicator
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Surface
@@ -16,6 +17,7 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavController
+import com.uxstate.recipeapp.feature_recipe.presentation.recipe_list.components.ChipsRow
 import com.uxstate.recipeapp.feature_recipe.presentation.recipe_list.components.RecipeCard
 import com.uxstate.recipeapp.feature_recipe.presentation.recipe_list.components.SearchTextField
 import com.uxstate.recipeapp.feature_recipe.presentation.recipe_list.viewmodel.RecipesListViewModel
@@ -31,7 +33,8 @@ fun RecipesOverviewScreen(
     //get states from viewModel
     val listState by viewModel.recipesListState
     val query by viewModel.query
-
+val categories = FoodCategory.values().toList()
+    val scrollState = rememberScrollState()
 
     //add containing column
 
@@ -51,6 +54,8 @@ fun RecipesOverviewScreen(
                     onClearTextField = viewModel::onClearTextField,
 
                     )
+
+                ChipsRow(categories = categories, scrollState = scrollState )
                 LazyColumn() {
 
                     itemsIndexed(items = listState.recipes) { i, recipe ->
