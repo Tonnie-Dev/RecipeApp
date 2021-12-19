@@ -41,6 +41,9 @@ fun RecipesOverviewScreen(
     //retrieve selected category from the viewModel
     val selectedCategory by viewModel.selectedCategory
 
+    //retrieve scroll position
+    val scrollPosition:Int = viewModel.scrollPosition
+
     //add containing column
 
     Box(modifier = Modifier.fillMaxSize()) {
@@ -64,11 +67,9 @@ fun RecipesOverviewScreen(
                     selectedCategory = selectedCategory,
                     categories = categories,
                     scrollState = scrollState,
+                    scrollPosition = scrollPosition,
                     onSelectedCategoryChange = viewModel::onSelectedCategoryChanged,
-                    onExecuteSearch = viewModel::getRecipes
-
-
-                )
+                    onExecuteSearch = viewModel::getRecipes)
                 LazyColumn() {
 
                     itemsIndexed(items = listState.recipes) { i, recipe ->

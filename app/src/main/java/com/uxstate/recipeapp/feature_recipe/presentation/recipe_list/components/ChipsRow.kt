@@ -9,6 +9,8 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import com.uxstate.recipeapp.feature_recipe.presentation.recipe_list.FoodCategory
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.launch
 
 
 @Composable
@@ -18,6 +20,7 @@ fun ChipsRow(
     categories: List<FoodCategory>,
     scrollState: ScrollState,
   scrollPosition:Int,
+    coroutineScope: CoroutineScope,
     onSelectedCategoryChange: (String) -> Unit,
     onExecuteSearch: () -> Unit
 ) {
@@ -27,13 +30,15 @@ fun ChipsRow(
         modifier
                 .fillMaxWidth()
                 .padding(start = 8.dp, bottom = 8.dp)
-                .horizontalScroll(scrollState, enabled = true)
+                .horizontalScroll(scrollState)
     ) {
 
         for (category in categories) {
 
-            //restoring scrolling position
-                //scrollState.scrollTo(scrollPosition)
+            //restoring scrolling position but should called in a Coroutine
+                coroutineScope.launch {
+                    scrollState.scrollTo(scrollPosition)
+                }
 
             FoodCategoryChip(
                 category = category.value,
