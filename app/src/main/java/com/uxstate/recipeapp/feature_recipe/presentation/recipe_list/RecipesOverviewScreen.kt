@@ -1,9 +1,6 @@
 package com.uxstate.recipeapp.feature_recipe.presentation.recipe_list
 
 import androidx.compose.foundation.layout.*
-import androidx.compose.foundation.lazy.LazyColumn
-import androidx.compose.foundation.lazy.itemsIndexed
-import androidx.compose.foundation.lazy.rememberLazyListState
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.material.CircularProgressIndicator
 import androidx.compose.material.MaterialTheme
@@ -20,7 +17,9 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavController
-import com.uxstate.recipeapp.feature_recipe.presentation.recipe_list.components.*
+import com.uxstate.recipeapp.feature_recipe.presentation.recipe_list.components.ChipsRow
+import com.uxstate.recipeapp.feature_recipe.presentation.recipe_list.components.SearchTextField
+import com.uxstate.recipeapp.feature_recipe.presentation.recipe_list.components.ShimmerRecipeCardItem
 import com.uxstate.recipeapp.feature_recipe.presentation.recipe_list.viewmodel.RecipesListViewModel
 
 @ExperimentalComposeUiApi
@@ -41,7 +40,7 @@ fun RecipesOverviewScreen(
     val selectedCategory by viewModel.selectedCategory
 
     //retrieve scroll position
-    val scrollPosition:Int = viewModel.scrollPosition
+    val scrollPosition: Int = viewModel.scrollPosition
 
     val coroutineScope = rememberCoroutineScope()
     //add containing column
@@ -72,24 +71,31 @@ fun RecipesOverviewScreen(
                     onSelectedCategoryChange = {
 
                         viewModel.onSelectedCategoryChanged(it)
-                             viewModel.onCategoryScrollPositionChange(scrollState.value)
+                        viewModel.onCategoryScrollPositionChange(scrollState.value)
 
-                                               },
-                    onExecuteSearch = viewModel::getRecipes)
-                
-                
-              
+                    },
+                    onExecuteSearch = viewModel::getRecipes
+                )
 
 
-                
-       /*         LazyColumn() {
 
-                    itemsIndexed(items = listState.recipes) { i, recipe ->
+                ShimmerRecipeCardItem(
+                    colors = listOf(
+                        Color.LightGray.copy(alpha = 0.9f),
+                        Color.LightGray.copy(alpha = 0.2f),
+                        Color.LightGray.copy(alpha = 0.9f)
+                    ), cardHeight = 250.dp
+                )
 
-                        RecipeCard(recipe = recipe) {}
-                    }
 
-                }*/
+                /*         LazyColumn() {
+
+                             itemsIndexed(items = listState.recipes) { i, recipe ->
+
+                                 RecipeCard(recipe = recipe) {}
+                             }
+
+                         }*/
 
             }
 

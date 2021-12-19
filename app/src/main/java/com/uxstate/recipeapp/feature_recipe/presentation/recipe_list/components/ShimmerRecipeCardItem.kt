@@ -15,14 +15,14 @@ import androidx.compose.ui.unit.Dp
 
 @Composable
 fun ShimmerRecipeCardItem(
-    color:List<Color>,
+    colors:List<Color>,
     cardHeight:Dp
 ) {
 
     val brush = Brush.linearGradient(
-        colors = color,
+        colors = colors,
         start = Offset(200f, 200f),
-        end = Offset(200f, 200f)
+        end = Offset(400f, 400f)
     )
 
 Surface(shape = MaterialTheme.shapes.small) {
