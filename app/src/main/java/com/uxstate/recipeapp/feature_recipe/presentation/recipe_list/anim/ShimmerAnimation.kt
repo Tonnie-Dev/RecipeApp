@@ -3,6 +3,10 @@ package com.uxstate.recipeapp.feature_recipe.presentation.recipe_list.anim
 import androidx.compose.animation.core.*
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
+import androidx.compose.ui.geometry.Offset
+import androidx.compose.ui.graphics.Brush
+import com.uxstate.recipeapp.feature_recipe.presentation.recipe_list.components.ShimmerRecipeCardItem
+import com.uxstate.recipeapp.feature_recipe.presentation.ui.theme.ShimmerColorShades
 
 @Composable
 fun ShimmerAnimation() {
@@ -24,5 +28,20 @@ fun ShimmerAnimation() {
             repeatMode = RepeatMode.Restart
         )
     )
+
+    /*
+     Create a gradient using the list of colors
+     Use Linear Gradient for animating in any direction according to requirement
+     start=specifies the position to start with in cartesian like system Offset(10f,10f) means x(10,0) , y(0,10)
+     end = Animate the end position to give the shimmer effect using the transition created above
+   */
+
+    val brush = Brush.linearGradient(
+        colors = ShimmerColorShades,
+        start = Offset(10f, 10f),
+        end = Offset(translateAnim, translateAnim)
+    )
+    
+    ShimmerRecipeCardItem(brush = brush)
 
 }
