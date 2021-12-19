@@ -20,9 +20,7 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavController
-import com.uxstate.recipeapp.feature_recipe.presentation.recipe_list.components.ChipsRow
-import com.uxstate.recipeapp.feature_recipe.presentation.recipe_list.components.RecipeCard
-import com.uxstate.recipeapp.feature_recipe.presentation.recipe_list.components.SearchTextField
+import com.uxstate.recipeapp.feature_recipe.presentation.recipe_list.components.*
 import com.uxstate.recipeapp.feature_recipe.presentation.recipe_list.viewmodel.RecipesListViewModel
 
 @ExperimentalComposeUiApi
@@ -78,14 +76,25 @@ fun RecipesOverviewScreen(
 
                                                },
                     onExecuteSearch = viewModel::getRecipes)
-                LazyColumn() {
+                
+                
+                PulsatingAnimationDefinition {
+
+                    Column (horizontalAlignment = Alignment.CenterHorizontally){
+                        CircleIcon(radius = 70f, color = MaterialTheme.colors.primary)
+                        HeartIcon()
+                    }
+
+                }
+                
+       /*         LazyColumn() {
 
                     itemsIndexed(items = listState.recipes) { i, recipe ->
 
                         RecipeCard(recipe = recipe) {}
                     }
 
-                }
+                }*/
 
             }
 
