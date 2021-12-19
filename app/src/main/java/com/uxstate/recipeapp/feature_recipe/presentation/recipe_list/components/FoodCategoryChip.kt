@@ -37,7 +37,7 @@ fun FoodCategoryChip(
                 color = Color.White,
                 modifier = Modifier
                         .padding(8.dp)
-                        
+
             )
         }
 

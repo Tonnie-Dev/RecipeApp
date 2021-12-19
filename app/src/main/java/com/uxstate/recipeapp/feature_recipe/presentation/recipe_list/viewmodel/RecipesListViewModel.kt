@@ -33,6 +33,10 @@ class RecipesListViewModel @Inject constructor(
     var selectedCategory: MutableState<FoodCategory?> = mutableStateOf(null)
         private set
 
+
+    //store scroll position
+    var scrollPosition = 0f
+
     init {
 
         getRecipes()
