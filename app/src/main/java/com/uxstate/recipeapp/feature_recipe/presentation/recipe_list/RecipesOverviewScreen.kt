@@ -11,6 +11,7 @@ import androidx.compose.material.Surface
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
+import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.ExperimentalComposeUiApi
 import androidx.compose.ui.Modifier
@@ -44,6 +45,7 @@ fun RecipesOverviewScreen(
     //retrieve scroll position
     val scrollPosition:Int = viewModel.scrollPosition
 
+    val coroutineScope = rememberCoroutineScope()
     //add containing column
 
     Box(modifier = Modifier.fillMaxSize()) {
@@ -68,7 +70,13 @@ fun RecipesOverviewScreen(
                     categories = categories,
                     scrollState = scrollState,
                     scrollPosition = scrollPosition,
-                    onSelectedCategoryChange = viewModel::onSelectedCategoryChanged,
+                    coroutineScope = coroutineScope,
+                    onSelectedCategoryChange = {
+
+                        viewModel.onSelectedCategoryChanged(it)
+                             viewModel.onCategoryScrollPositionChange(scrollState.value)
+
+                                               },
                     onExecuteSearch = viewModel::getRecipes)
                 LazyColumn() {
 

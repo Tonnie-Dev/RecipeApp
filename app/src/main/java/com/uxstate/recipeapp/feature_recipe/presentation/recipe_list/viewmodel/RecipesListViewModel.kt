@@ -2,6 +2,7 @@ package com.uxstate.recipeapp.feature_recipe.presentation.recipe_list.viewmodel
 
 import androidx.compose.runtime.MutableState
 import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.rememberCoroutineScope
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.uxstate.recipeapp.core.util.Resource
@@ -34,8 +35,10 @@ class RecipesListViewModel @Inject constructor(
         private set
 
 
-    //store scroll position
+    //store scroll position - it is not mutable as we not reacting to its changes
     var scrollPosition = 0
+
+
 
     init {
 

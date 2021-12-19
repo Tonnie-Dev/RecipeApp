@@ -33,12 +33,14 @@ fun ChipsRow(
                 .horizontalScroll(scrollState)
     ) {
 
+        //when the row is recomposed it resets to the scroll position stored by ViewModel
+        coroutineScope.launch {
+            scrollState.scrollTo(scrollPosition)
+        }
         for (category in categories) {
 
             //restoring scrolling position but should called in a Coroutine
-                coroutineScope.launch {
-                    scrollState.scrollTo(scrollPosition)
-                }
+
 
             FoodCategoryChip(
                 category = category.value,
