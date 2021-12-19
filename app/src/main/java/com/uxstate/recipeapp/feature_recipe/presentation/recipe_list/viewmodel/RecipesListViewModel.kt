@@ -106,6 +106,12 @@ class RecipesListViewModel @Inject constructor(
         onSearchQueryChange(category)
 
     }
+
+    fun onCategoryScrollPositionChange(position:Float){
+
+
+        scrollPosition = position
+    }
     fun onClearTextField() {
 
         query.value = ""
