@@ -35,7 +35,7 @@ class RecipesListViewModel @Inject constructor(
 
 
     //store scroll position
-    var scrollPosition = 0f
+    var scrollPosition = 0
 
     init {
 
@@ -107,7 +107,7 @@ class RecipesListViewModel @Inject constructor(
 
     }
 
-    fun onCategoryScrollPositionChange(position:Float){
+    fun onCategoryScrollPositionChange(position:Int){
 
 
         scrollPosition = position

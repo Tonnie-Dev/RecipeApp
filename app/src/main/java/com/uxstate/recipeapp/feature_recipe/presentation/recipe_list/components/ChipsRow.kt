@@ -17,7 +17,7 @@ fun ChipsRow(
     modifier: Modifier = Modifier,
     categories: List<FoodCategory>,
     scrollState: ScrollState,
-    scrollPosition:Float
+  scrollPosition:Int,
     onSelectedCategoryChange: (String) -> Unit,
     onExecuteSearch: () -> Unit
 ) {
@@ -31,6 +31,9 @@ fun ChipsRow(
     ) {
 
         for (category in categories) {
+
+            //restoring scrolling position
+                //scrollState.scrollTo(scrollPosition)
 
             FoodCategoryChip(
                 category = category.value,
