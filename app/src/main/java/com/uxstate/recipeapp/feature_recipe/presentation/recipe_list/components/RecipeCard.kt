@@ -20,7 +20,7 @@ import timber.log.Timber
 
 @Composable
 fun RecipeCard(recipe: Recipe, onClick: () -> Unit) {
-Timber.i("Recipe Card Called")
+    Timber.i("Recipe Card Called")
     Card(
         shape = MaterialTheme.shapes.small,
         modifier = Modifier

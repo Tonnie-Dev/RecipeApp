@@ -78,14 +78,9 @@ fun RecipesOverviewScreen(
                     onExecuteSearch = viewModel::getRecipes)
                 
                 
-                PulsatingAnimationDefinition {
+              
 
-                    Column (horizontalAlignment = Alignment.CenterHorizontally){
-                        CircleIcon(radius = 70f, color = MaterialTheme.colors.primary)
-                        HeartIcon()
-                    }
 
-                }
                 
        /*         LazyColumn() {
 
