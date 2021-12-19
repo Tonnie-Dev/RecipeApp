@@ -17,6 +17,7 @@ fun ChipsRow(
     modifier: Modifier = Modifier,
     categories: List<FoodCategory>,
     scrollState: ScrollState,
+    scrollPosition:Float
     onSelectedCategoryChange: (String) -> Unit,
     onExecuteSearch: () -> Unit
 ) {
