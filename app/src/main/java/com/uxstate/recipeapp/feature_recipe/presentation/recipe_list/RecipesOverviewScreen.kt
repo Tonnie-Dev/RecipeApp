@@ -48,7 +48,7 @@ fun RecipesOverviewScreen(
     val coroutineScope = rememberCoroutineScope()
     //add containing column
 
-    Box(modifier = Modifier.fillMaxSize()) {
+   Column(modifier = Modifier.fillMaxSize()) {
 
 
         Surface(
@@ -99,7 +99,7 @@ fun RecipesOverviewScreen(
 
             //CircularProgressIndicator(modifier = Modifier.align(Alignment.Center))
 
-            LazyColumn{
+            LazyColumn( ){
 
                 repeat(5){
 
@@ -118,7 +118,7 @@ fun RecipesOverviewScreen(
                 modifier = Modifier
                         .fillMaxWidth()
                         .padding(20.dp)
-                        .align(Alignment.Center)
+                        
             )
         }
 
