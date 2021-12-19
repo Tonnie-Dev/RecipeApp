@@ -13,7 +13,8 @@ fun ShimmerRecipeCardItem(
 ) {
 
     Column(modifier = Modifier.padding(16.dp)) {
-
+       /* spacer with brush receiving from [ShimmerAnimation]
+        Composable which is the Animation you are gonna create.*/
         Spacer(
             modifier = Modifier
                     .fillMaxWidth()
