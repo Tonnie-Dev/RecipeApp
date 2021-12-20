@@ -16,7 +16,12 @@ fun MenuButton(
     onToggleTheme: () -> Unit,
 
 ) {
-ConstraintLayout() {
+
+
+    IconButton(onClick = onToggleTheme) {
+        Icon(imageVector = Icons.Filled.MoreVert, contentDescription = null)
+    }
+/*ConstraintLayout() {
     //create id
     val menu = createRef()
 
@@ -30,7 +35,7 @@ ConstraintLayout() {
 
         Icon(imageVector = Icons.Filled.MoreVert, contentDescription = null)
     }
-}
+}*/
 
 }
 

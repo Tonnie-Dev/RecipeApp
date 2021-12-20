@@ -13,7 +13,6 @@ import androidx.compose.material.icons.filled.Clear
 import androidx.compose.material.icons.filled.Search
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
-import androidx.compose.ui.Alignment.Companion.CenterVertically
 import androidx.compose.ui.ExperimentalComposeUiApi
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalSoftwareKeyboardController
@@ -36,7 +35,7 @@ onClearTextField:()-> Unit,
     val keyboardController = LocalSoftwareKeyboardController.current
 
 
-        Row {
+        Row (verticalAlignment = Alignment.CenterVertically){
             TextField(
                 value = value,
                 onValueChange = onValueChanged,
@@ -86,7 +85,7 @@ onClearTextField:()-> Unit,
 
             )
 
-            MenuButton(modifier = Modifier.align(CenterVertically), onToggleTheme = onToggleTheme)
+            MenuButton(onToggleTheme = onToggleTheme )
 
     }
 }
