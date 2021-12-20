@@ -23,11 +23,14 @@ class MainActivity() : ComponentActivity() {
     @Inject
     lateinit var app:RecipeApp
 
+
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
+//alternative is
+       // this.application
         setContent {
-            RecipeAppTheme {
+            RecipeAppTheme(darkTheme = app.isDark.value) {
                 window?.statusBarColor = Blue800.toArgb()
 
                 val navController = rememberNavController()
@@ -39,7 +42,10 @@ class MainActivity() : ComponentActivity() {
                     composable(route = Screens.RecipesOverviewScreen.route) {
 
 
-                        RecipesOverviewScreen(navController = navController)
+                        RecipesOverviewScreen(navController = navController,{
+
+                            app.toggleLightTheme()
+                        })
                     }
 
                 }
