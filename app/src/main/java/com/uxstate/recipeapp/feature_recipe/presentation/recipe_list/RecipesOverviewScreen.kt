@@ -134,10 +134,3 @@ onToggleTheme = onToggleTheme
     }
 
 }
-
-@ExperimentalComposeUiApi
-@Preview(name = "OverviewScreen")
-@Composable
-fun PreviewOverviewScreen() {
-    RecipesOverviewScreen(navController = rememberNavController( ), onToggleTheme = { /*TODO*/ },viewModel= hiltViewModel())
-}
