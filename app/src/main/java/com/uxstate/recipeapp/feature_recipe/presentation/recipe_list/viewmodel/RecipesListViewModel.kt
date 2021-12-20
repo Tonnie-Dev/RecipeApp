@@ -118,6 +118,7 @@ class RecipesListViewModel @Inject constructor(
     fun onClearTextField() {
 
         query.value = ""
+        selectedCategory.value = null
     }
 
 

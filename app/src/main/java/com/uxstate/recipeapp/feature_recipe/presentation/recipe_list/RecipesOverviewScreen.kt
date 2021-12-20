@@ -17,9 +17,11 @@ import androidx.compose.ui.ExperimentalComposeUiApi
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.style.TextAlign
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavController
+import androidx.navigation.compose.rememberNavController
 import com.uxstate.recipeapp.feature_recipe.presentation.recipe_list.anim.ShimmerAnimation
 import com.uxstate.recipeapp.feature_recipe.presentation.recipe_list.components.ChipsRow
 import com.uxstate.recipeapp.feature_recipe.presentation.recipe_list.components.RecipeCard
@@ -50,7 +52,10 @@ fun RecipesOverviewScreen(
     val coroutineScope = rememberCoroutineScope()
     //add containing column
 
-   Column(modifier = Modifier.fillMaxSize().padding(8.dp).background(color = MaterialTheme.colors.background)) {
+ Column(modifier = Modifier
+         .fillMaxSize()
+         .padding(8.dp)
+         ) {
 
 
         Surface(
@@ -84,7 +89,7 @@ onToggleTheme = onToggleTheme
                 )
 
 
-                LazyColumn() {
+                LazyColumn(Modifier.background(color = MaterialTheme.colors.background)) {
 
                     itemsIndexed(items = listState.recipes) { i, recipe ->
 
@@ -128,4 +133,11 @@ onToggleTheme = onToggleTheme
 
     }
 
+}
+
+@ExperimentalComposeUiApi
+@Preview(name = "OverviewScreen")
+@Composable
+fun PreviewOverviewScreen() {
+    RecipesOverviewScreen(navController = rememberNavController( ), onToggleTheme = { /*TODO*/ },viewModel= hiltViewModel())
 }
