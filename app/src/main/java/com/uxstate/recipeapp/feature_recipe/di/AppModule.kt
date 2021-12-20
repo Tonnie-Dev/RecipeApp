@@ -1,7 +1,9 @@
 package com.uxstate.recipeapp.feature_recipe
 
+import android.content.Context
 import com.squareup.moshi.Moshi
 import com.squareup.moshi.kotlin.reflect.KotlinJsonAdapterFactory
+import com.uxstate.recipeapp.RecipeApp
 import com.uxstate.recipeapp.feature_recipe.data.remote.RecipeAPI
 import com.uxstate.recipeapp.feature_recipe.data.remote.repository.RecipeRepositoryImpl
 import com.uxstate.recipeapp.feature_recipe.domain.repository.RecipeRepository
@@ -10,6 +12,7 @@ import com.uxstate.recipeapp.feature_recipe.domain.use_cases.GetRecipesUseCase
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
+import dagger.hilt.android.qualifiers.ApplicationContext
 import dagger.hilt.components.SingletonComponent
 import retrofit2.Retrofit
 import retrofit2.converter.moshi.MoshiConverterFactory
@@ -73,5 +76,12 @@ object AppModule {
     fun provideAuthToken():String{
 
         return "Token 9c8b06d329136da358c2d00e76946b0111ce2c48"
+    }
+
+    @Provides
+    @Singleton
+    fun provideApplication(@ApplicationContext app: Context):RecipeApp {
+
+        return app as RecipeApp
     }
 }

@@ -30,7 +30,8 @@ fun SearchTextField(
     value: String,
     onValueChanged: (String) -> Unit,
     onImeAction: () -> Unit = {},
-onClearTextField:()-> Unit
+onClearTextField:()-> Unit,
+    onToggleTheme:()-> Unit
     ) {
     val keyboardController = LocalSoftwareKeyboardController.current
 
@@ -85,9 +86,7 @@ onClearTextField:()-> Unit
 
             )
 
-            MenuButton(modifier = Modifier.align(CenterVertically)) {
-
-            }
+            MenuButton(modifier = Modifier.align(CenterVertically), onToggleTheme = onToggleTheme)
 
     }
 }
@@ -97,7 +96,7 @@ onClearTextField:()-> Unit
 @Composable
 fun PreviewSearchTextField() {
 
-    SearchTextField(modifier = Modifier,"Tonnie",{},{},{})
+    SearchTextField(modifier = Modifier,"Tonnie",{},{},{},{})
 
 }
 
