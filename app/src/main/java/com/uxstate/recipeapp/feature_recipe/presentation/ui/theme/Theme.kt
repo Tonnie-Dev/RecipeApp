@@ -25,6 +25,8 @@ private val LightColorPalette = lightColors(
     onSurface = Black2,
 )
 
+        //dark theme is the invervese of light theme
+//on-colors are all white
 private val  DarkColorPalette = darkColors(
     primary = Blue700,
     primaryVariant = Color.White,

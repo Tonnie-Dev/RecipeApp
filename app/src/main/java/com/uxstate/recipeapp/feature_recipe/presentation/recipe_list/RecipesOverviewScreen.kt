@@ -54,7 +54,7 @@ fun RecipesOverviewScreen(
         Surface(
             elevation = 8.dp,
             modifier = Modifier.fillMaxWidth(),
-            color = Color.White
+            color = MaterialTheme.colors.surface
         ) {
             Column {
                 SearchTextField(
