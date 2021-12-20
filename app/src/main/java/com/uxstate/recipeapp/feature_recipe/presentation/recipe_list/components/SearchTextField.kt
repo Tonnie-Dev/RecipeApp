@@ -42,7 +42,7 @@ onClearTextField:()-> Unit,
 
                 //occupy 95% of max width to menu space
                 modifier
-                        .fillMaxWidth(0.9f)
+                        .fillMaxWidth(0.90f)
                         .padding(8.dp),
 
                 label = { Text(text = "search") },

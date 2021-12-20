@@ -1,5 +1,6 @@
 package com.uxstate.recipeapp.feature_recipe.presentation.recipe_list
 
+import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.itemsIndexed
@@ -49,7 +50,7 @@ fun RecipesOverviewScreen(
     val coroutineScope = rememberCoroutineScope()
     //add containing column
 
-   Column(modifier = Modifier.fillMaxSize().padding(8.dp)) {
+   Column(modifier = Modifier.fillMaxSize().padding(8.dp).background(color = MaterialTheme.colors.background)) {
 
 
         Surface(
