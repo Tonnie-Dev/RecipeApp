@@ -95,6 +95,11 @@ class RecipesListViewModel @Inject constructor(
 
         query.value = text
 
+        if (text.isBlank()){
+
+            selectedCategory.value = null
+        }
+
     }
 
 
