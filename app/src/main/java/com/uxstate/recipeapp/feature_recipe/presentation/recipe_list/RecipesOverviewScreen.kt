@@ -29,6 +29,7 @@ import com.uxstate.recipeapp.feature_recipe.presentation.recipe_list.viewmodel.R
 @Composable
 fun RecipesOverviewScreen(
     navController: NavController,
+    onToggleTheme: ()-> Unit,
     viewModel: RecipesListViewModel = hiltViewModel()
 ) {
 
@@ -62,7 +63,7 @@ fun RecipesOverviewScreen(
                     onValueChanged = viewModel::onSearchQueryChange,
                     onImeAction = viewModel::getRecipes,
                     onClearTextField = viewModel::onClearTextField,
-
+onToggleTheme = onToggleTheme
                     )
 
                 ChipsRow(
