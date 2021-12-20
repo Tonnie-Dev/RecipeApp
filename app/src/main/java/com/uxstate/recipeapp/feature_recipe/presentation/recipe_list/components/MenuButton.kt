@@ -6,6 +6,7 @@ import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.MoreVert
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.constraintlayout.compose.ConstraintLayout
 
 
@@ -31,4 +32,12 @@ ConstraintLayout() {
     }
 }
 
+}
+
+@Preview(name = "PreviewMenutButton")
+@Composable
+fun PreviewMenuButton() {
+    MenuButton() {
+        
+    }
 }
