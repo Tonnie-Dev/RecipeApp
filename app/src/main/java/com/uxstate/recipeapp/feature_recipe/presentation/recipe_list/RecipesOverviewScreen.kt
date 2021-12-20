@@ -49,13 +49,14 @@ fun RecipesOverviewScreen(
     val coroutineScope = rememberCoroutineScope()
     //add containing column
 
-   Column(modifier = Modifier.fillMaxSize()) {
+   Column(modifier = Modifier.fillMaxSize().padding(8.dp)) {
 
 
         Surface(
             elevation = 8.dp,
             modifier = Modifier.fillMaxWidth(),
             color = MaterialTheme.colors.surface
+
         ) {
             Column {
                 SearchTextField(
