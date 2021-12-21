@@ -62,12 +62,12 @@ fun RecipeCard(recipe: Recipe, onClick: () -> Unit) {
                     text = recipe.title,
                     textAlign = TextAlign.Start,
                     modifier = Modifier.fillMaxWidth(0.85f),
-                    style = MaterialTheme.typography.h5
+                    style = MaterialTheme.typography.h3
 
                 )
                 Text(
                     text = recipe.rating.toString(),
-                    style = MaterialTheme.typography.h6,
+                    style = MaterialTheme.typography.h5,
                     textAlign = TextAlign.End,
                     modifier = Modifier
                             .fillMaxWidth()
