@@ -94,7 +94,8 @@ fun RecipesOverviewScreen(
             }
 
     },
-    bottomBar = {}
+    bottomBar = {},
+        drawerContent = {}
         ) {
         
     }
