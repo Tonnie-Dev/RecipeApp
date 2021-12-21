@@ -6,6 +6,7 @@ import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.Font
 import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.text.font.FontWeight.Companion.Normal
 import androidx.compose.ui.text.font.FontWeight.Companion.W400
 import androidx.compose.ui.unit.sp
 import com.uxstate.recipeapp.R
@@ -100,7 +101,11 @@ val QuickSandTypography = Typography(
         fontWeight = W400,
         fontSize = 15.sp,
         color = Color.White
-    )
+    ),
+
+    caption = TextStyle(fontFamily = QuickSandFontFamily,
+    fontWeight = Normal,
+    fontSize = 12.sp)
 
 
 )
