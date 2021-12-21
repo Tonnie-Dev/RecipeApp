@@ -105,7 +105,12 @@ val QuickSandTypography = Typography(
 
     caption = TextStyle(fontFamily = QuickSandFontFamily,
     fontWeight = Normal,
-    fontSize = 12.sp)
+    fontSize = 12.sp),
+    overline = TextStyle(
+        fontFamily = QuickSandFontFamily,
+        fontWeight = W400,
+        fontSize = 12.sp
+    )
 
 
 )
