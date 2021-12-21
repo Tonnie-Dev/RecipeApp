@@ -97,14 +97,14 @@ fun RecipesOverviewScreen(
 
 
 
-        Column(
+        Box(
             modifier = Modifier
                     .fillMaxSize()
-                    .padding(8.dp)
+                    .background(color = MaterialTheme.colors.surface)
         ) {
 
 
-            LazyColumn(Modifier.background(color = MaterialTheme.colors.background)) {
+            LazyColumn() {
 
                 itemsIndexed(items = listState.recipes) { i, recipe ->
 
