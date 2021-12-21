@@ -76,7 +76,7 @@ fun RecipeAppTheme(darkTheme: Boolean /*isSystemInDarkTheme()*/, content: @Compo
 
     MaterialTheme(
         colors = colors,
-        typography = Typography,
+        typography = QuickSandTypography,
         shapes = Shapes,
         content = content
     )
