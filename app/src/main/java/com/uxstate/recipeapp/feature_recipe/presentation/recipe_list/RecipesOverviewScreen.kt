@@ -5,10 +5,7 @@ import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.itemsIndexed
 import androidx.compose.foundation.rememberScrollState
-import androidx.compose.material.CircularProgressIndicator
-import androidx.compose.material.MaterialTheme
-import androidx.compose.material.Surface
-import androidx.compose.material.Text
+import androidx.compose.material.*
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.rememberCoroutineScope
@@ -51,6 +48,11 @@ fun RecipesOverviewScreen(
 
     val coroutineScope = rememberCoroutineScope()
     //add containing column
+    
+    
+    Scaffold() {
+        
+    }
 
  Column(modifier = Modifier
          .fillMaxSize()
@@ -89,17 +91,17 @@ onToggleTheme = onToggleTheme
                 )
 
 
-                LazyColumn(Modifier.background(color = MaterialTheme.colors.background)) {
 
-                    itemsIndexed(items = listState.recipes) { i, recipe ->
 
-                        RecipeCard(recipe = recipe) {}
-                    }
+            }
+            LazyColumn(Modifier.background(color = MaterialTheme.colors.background)) {
 
+                itemsIndexed(items = listState.recipes) { i, recipe ->
+
+                    RecipeCard(recipe = recipe) {}
                 }
 
             }
-
         }
 
 
