@@ -50,7 +50,48 @@ fun RecipesOverviewScreen(
     //add containing column
     
     
-    Scaffold() {
+    Scaffold(
+
+        topBar = {
+
+            Surface(
+                elevation = 8.dp,
+                modifier = Modifier.fillMaxWidth(),
+                color = MaterialTheme.colors.surface
+
+            ) {
+                Column {
+                    SearchTextField(
+                        value = query,
+                        onValueChanged = viewModel::onSearchQueryChange,
+                        onImeAction = viewModel::getRecipes,
+                        onClearTextField = viewModel::onClearTextField,
+                        onToggleTheme = onToggleTheme
+                    )
+
+                    ChipsRow(
+                        selectedCategory = selectedCategory,
+                        categories = categories,
+                        scrollState = scrollState,
+                        scrollPosition = scrollPosition,
+                        coroutineScope = coroutineScope,
+                        onSelectedCategoryChange = {
+
+                            viewModel.onSelectedCategoryChanged(it)
+                            viewModel.onCategoryScrollPositionChange(scrollState.value)
+
+                        },
+                        onExecuteSearch = viewModel::getRecipes
+                    )
+
+
+
+
+                }
+
+            }
+
+    }) {
         
     }
 
@@ -60,49 +101,16 @@ fun RecipesOverviewScreen(
          ) {
 
 
-        Surface(
-            elevation = 8.dp,
-            modifier = Modifier.fillMaxWidth(),
-            color = MaterialTheme.colors.surface
-
-        ) {
-            Column {
-                SearchTextField(
-                    value = query,
-                    onValueChanged = viewModel::onSearchQueryChange,
-                    onImeAction = viewModel::getRecipes,
-                    onClearTextField = viewModel::onClearTextField,
-onToggleTheme = onToggleTheme
-                    )
-
-                ChipsRow(
-                    selectedCategory = selectedCategory,
-                    categories = categories,
-                    scrollState = scrollState,
-                    scrollPosition = scrollPosition,
-                    coroutineScope = coroutineScope,
-                    onSelectedCategoryChange = {
-
-                        viewModel.onSelectedCategoryChanged(it)
-                        viewModel.onCategoryScrollPositionChange(scrollState.value)
-
-                    },
-                    onExecuteSearch = viewModel::getRecipes
-                )
 
 
+     LazyColumn(Modifier.background(color = MaterialTheme.colors.background)) {
 
+         itemsIndexed(items = listState.recipes) { i, recipe ->
 
-            }
-            LazyColumn(Modifier.background(color = MaterialTheme.colors.background)) {
+             RecipeCard(recipe = recipe) {}
+         }
 
-                itemsIndexed(items = listState.recipes) { i, recipe ->
-
-                    RecipeCard(recipe = recipe) {}
-                }
-
-            }
-        }
+     }
 
 
         if (listState.loading) {
