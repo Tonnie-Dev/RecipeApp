@@ -54,6 +54,8 @@ fun RecipesOverviewScreen(
 
         topBar = {
 
+
+
             Surface(
                 elevation = 8.dp,
                 modifier = Modifier.fillMaxWidth(),
@@ -91,7 +93,9 @@ fun RecipesOverviewScreen(
 
             }
 
-    }) {
+    },
+    bottomBar = {}
+        ) {
         
     }
 
