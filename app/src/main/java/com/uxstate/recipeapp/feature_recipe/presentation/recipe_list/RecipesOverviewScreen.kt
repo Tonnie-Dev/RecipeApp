@@ -20,6 +20,7 @@ import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavController
 import com.uxstate.recipeapp.feature_recipe.presentation.recipe_list.anim.ShimmerAnimation
 import com.uxstate.recipeapp.feature_recipe.presentation.recipe_list.components.ChipsRow
+import com.uxstate.recipeapp.feature_recipe.presentation.recipe_list.components.MyBottomBar
 import com.uxstate.recipeapp.feature_recipe.presentation.recipe_list.components.RecipeCard
 import com.uxstate.recipeapp.feature_recipe.presentation.recipe_list.components.SearchTextField
 import com.uxstate.recipeapp.feature_recipe.presentation.recipe_list.viewmodel.RecipesListViewModel
@@ -90,7 +91,9 @@ fun RecipesOverviewScreen(
             }
 
         },
-        bottomBar = {},
+        bottomBar = {
+                    MyBottomBar()
+        },
         drawerContent = {}
     ) {
 
