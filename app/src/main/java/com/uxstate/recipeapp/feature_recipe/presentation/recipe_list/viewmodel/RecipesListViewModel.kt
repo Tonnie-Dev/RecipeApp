@@ -43,7 +43,7 @@ class RecipesListViewModel @Inject constructor(
     var page = mutableStateOf(1)
 
     //track the scroll position - not observable therefore not a mutable state
-    val listScrollPosition = 0
+    var listScrollPosition = 0
 
     init {
 
@@ -131,6 +131,15 @@ class RecipesListViewModel @Inject constructor(
 
         page.value = page.value +1
     }
+
+    //keeps track of the scroll position
+    fun onChangeScrollPosition(position:Int){
+
+        listScrollPosition = position
+    }
+
+
+    
     fun onClearTextField() {
 
         query.value = ""
