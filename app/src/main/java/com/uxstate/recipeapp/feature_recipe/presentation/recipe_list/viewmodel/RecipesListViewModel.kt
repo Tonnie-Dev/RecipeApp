@@ -55,7 +55,7 @@ class RecipesListViewModel @Inject constructor(
     }
 
 
-    private fun firstPageCall() {
+ fun firstPageCall() {
         getRecipes(token = token, page = 1, query = query.value)
 
     }
