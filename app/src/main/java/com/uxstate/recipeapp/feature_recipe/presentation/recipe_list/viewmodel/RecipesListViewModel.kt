@@ -196,6 +196,16 @@ class RecipesListViewModel @Inject constructor(
     }
 
 
+
+    //called when new search is executed
+    private fun resetSearchState(){
+
+        recipesListState.value = recipesListState.value.copy(recipes = listOf())
+        page.value = 1
+        onChangeScrollPosition(0)
+
+    }
+
     fun onClearTextField() {
 
         query.value = ""
