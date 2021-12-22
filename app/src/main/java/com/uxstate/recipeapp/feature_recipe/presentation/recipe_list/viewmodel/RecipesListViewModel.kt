@@ -51,13 +51,12 @@ class RecipesListViewModel @Inject constructor(
 
     init {
 
-firstPageCall()
+        firstPageCall()
     }
 
 
-
-    fun firstPageCall(){
-getRecipes(token = token, page = 1, query = query.value)
+    private fun firstPageCall() {
+        getRecipes(token = token, page = 1, query = query.value)
 
     }
     //fxn to get the next page(2nd search items from the api
@@ -84,21 +83,21 @@ getRecipes(token = token, page = 1, query = query.value)
 
                 //2nd api loading when page exceed 1
 
-                if (page.value>1 ){
+                if (page.value > 1) {
 
 
-                    val result = useCase()
+                    getRecipes(token = token, page = page.value, query = query.value)
                 }
+
+                //hide progress bar
+                recipesListState.value = recipesListState.value.copy(loading = false)
             }
         }
     }
 
 
-
-
-
     //get recipes - 1st call, page number = 1
-   private fun getRecipes(token: String, page:Int, query:String) {
+    private fun getRecipes(token: String, page: Int, query: String) {
 
         //listen to flow emissions from usecase using onEach{}
         useCase(token = token, page = page, query = query).onEach {
@@ -133,6 +132,8 @@ getRecipes(token = token, page = 1, query = query.value)
                         error = "",
                         recipes = emission.data ?: emptyList()
                     )
+
+                    appendRecipes(recipesListState.value.recipes)
                 }
 
             }
@@ -141,8 +142,6 @@ getRecipes(token = token, page = 1, query = query.value)
                 .launchIn(viewModelScope)
 
     }
-
-
 
 
     fun onSearchQueryChange(text: String) {
