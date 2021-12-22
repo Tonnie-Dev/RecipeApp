@@ -57,9 +57,44 @@ class RecipesListViewModel @Inject constructor(
 
 
     fun firstPageCall(){
-
+getRecipes(token = token, page = 1, query = query.value)
 
     }
+    //fxn to get the next page(2nd search items from the api
+
+    fun nextPage() {
+
+        viewModelScope.launch {
+
+            //lock to prevent loading of page too quickly when you reach the bottom
+            if ((scrollPosition + 1) >= (page.value * PAGE_SIZE)) {
+
+                //means bottom of the page has been reached - so show loading
+
+                recipesListState.value = recipesListState.value.copy(loading = true)
+                //at that point increment the page number
+
+                incrementPageNumber()
+
+                Timber.i("Next Page Triggered - pageNo is ${page.value}")
+
+                //add delay to see the loading
+
+                delay(1000)
+
+                //2nd api loading when page exceed 1
+
+                if (page.value>1 ){
+
+
+                    val result = useCase()
+                }
+            }
+        }
+    }
+
+
+
 
 
     //get recipes - 1st call, page number = 1
@@ -107,38 +142,7 @@ class RecipesListViewModel @Inject constructor(
 
     }
 
-    //fxn to get the next page(2nd search items from the api
 
-    fun nextPage() {
-
-   viewModelScope.launch {
-
-       //lock to prevent loading of page too quickly when you reach the bottom
-       if ((scrollPosition + 1) >= (page.value * PAGE_SIZE)) {
-
-           //means bottom of the page has been reached - so show loading
-
-           recipesListState.value = recipesListState.value.copy(loading = true)
-           //at that point increment the page number
-
-           incrementPageNumber()
-
-           Timber.i("Next Page Triggered - pageNo is ${page.value}")
-
-           //add delay to see the loading
-
-           delay(1000)
-
-           //2nd api loading when page exceed 1
-
-           if (page.value>1 ){
-
-
-               val result = useCase()
-           }
-       }
-   }
-    }
 
 
     fun onSearchQueryChange(text: String) {
