@@ -96,6 +96,22 @@ class RecipesListViewModel @Inject constructor(
 
     }
 
+    //fxn to get the next page items from the api
+
+    fun nextPage() {
+
+        //lock to prevent loading of page too quickly when you reach the bottom
+        if ((scrollPosition + 1) >= (page.value * PAGE_SIZE)) {
+
+            //means bottom of the page has been reached - so show loading
+
+            recipesListState.value = recipesListState.value.copy(loading = true)
+            //at that point increment the page number
+
+            incrementPageNumber()
+        }
+    }
+
 
     fun onSearchQueryChange(text: String) {
 
