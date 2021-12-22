@@ -2,10 +2,10 @@ package com.uxstate.recipeapp.feature_recipe.presentation.recipe_list.viewmodel
 
 import androidx.compose.runtime.MutableState
 import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.rememberCoroutineScope
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.uxstate.recipeapp.core.util.Resource
+import com.uxstate.recipeapp.feature_recipe.domain.model.Recipe
 import com.uxstate.recipeapp.feature_recipe.domain.use_cases.GetRecipesUseCase
 import com.uxstate.recipeapp.feature_recipe.presentation.recipe_list.FoodCategory
 import com.uxstate.recipeapp.feature_recipe.presentation.recipe_list.getFoodCategory
@@ -17,6 +17,7 @@ import javax.inject.Named
 
 
 const val PAGE_SIZE = 30
+
 @HiltViewModel
 class RecipesListViewModel @Inject constructor(
     private val useCase: GetRecipesUseCase,
@@ -39,11 +40,11 @@ class RecipesListViewModel @Inject constructor(
     //store scroll position - it is not mutable as we not reacting to its changes
     var scrollPosition = 0
 
-//value to track the page number
+    //value to track the page number
     var page = mutableStateOf(1)
 
     //track the scroll position - not observable therefore not a mutable state
-    var listScrollPosition = 0
+    private var listScrollPosition = 0
 
     init {
 
@@ -100,7 +101,7 @@ class RecipesListViewModel @Inject constructor(
 
         query.value = text
 
-        if (text.isBlank()){
+        if (text.isBlank()) {
 
             selectedCategory.value = null
         }
@@ -108,7 +109,7 @@ class RecipesListViewModel @Inject constructor(
     }
 
 
-    fun onSelectedCategoryChanged(category:String){
+    fun onSelectedCategoryChanged(category: String) {
 
         //get FoodCategory Enum
         val newCategory = getFoodCategory(category)
@@ -120,32 +121,39 @@ class RecipesListViewModel @Inject constructor(
 
     }
 
-    fun onCategoryScrollPositionChange(position:Int){
+    fun onCategoryScrollPositionChange(position: Int) {
 
 
         scrollPosition = position
     }
 
 
-   private fun incrementPageNumber(){
+    private fun incrementPageNumber() {
 
-        page.value = page.value +1
+        page.value = page.value + 1
     }
 
     //keeps track of the scroll position
-    fun onChangeScrollPosition(position:Int){
+    fun onChangeScrollPosition(position: Int) {
 
         listScrollPosition = position
     }
 
 
-    
+    //append new recipes to the current list of recipes
+    private fun appendRecipes(recipes: List<Recipe>) {
+
+        val currentList = ArrayList(recipesListState.value.recipes)
+        currentList.addAll(recipes)
+        recipesListState.value = recipesListState.value.copy(recipes = currentList)
+    }
+
+
     fun onClearTextField() {
 
         query.value = ""
         selectedCategory.value = null
     }
-
 
 
 }
