@@ -51,7 +51,7 @@ class RecipesListViewModel @Inject constructor(
 
     init {
 
-        getRecipes()
+firstPageCall()
     }
 
 
