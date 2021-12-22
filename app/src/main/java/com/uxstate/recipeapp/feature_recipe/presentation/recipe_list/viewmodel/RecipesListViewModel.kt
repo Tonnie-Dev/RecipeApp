@@ -16,6 +16,7 @@ import javax.inject.Inject
 import javax.inject.Named
 
 
+const val PAGE_SIZE = 30
 @HiltViewModel
 class RecipesListViewModel @Inject constructor(
     private val useCase: GetRecipesUseCase,
