@@ -91,10 +91,7 @@ fun RecipesOverviewScreen(
             }
 
         },
-        bottomBar = {
-                    MyBottomBar()
-        },
-        drawerContent = {}
+       
     ) {
 
 
