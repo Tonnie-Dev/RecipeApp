@@ -125,6 +125,12 @@ class RecipesListViewModel @Inject constructor(
 
         scrollPosition = position
     }
+
+
+   private fun incrementPageNumber(){
+
+        page.value = page.value +1
+    }
     fun onClearTextField() {
 
         query.value = ""
