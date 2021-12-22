@@ -181,7 +181,7 @@ resetSearchState()
     }
 
     //keeps track of the scroll position
-    private fun onChangeScrollPosition(position: Int) {
+  fun onChangeScrollPosition(position: Int) {
 
         listScrollPosition = position
     }

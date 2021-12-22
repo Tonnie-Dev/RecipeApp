@@ -42,7 +42,7 @@ fun RecipesOverviewScreen(
 
     //observe page change
     val page by viewModel.page
-    
+
     val scrollState = rememberScrollState()
     //retrieve selected category from the viewModel
     val selectedCategory by viewModel.selectedCategory
@@ -110,8 +110,9 @@ fun RecipesOverviewScreen(
 
             LazyColumn() {
 
-                itemsIndexed(items = listState.recipes) { i, recipe ->
+                itemsIndexed(items = listState.recipes) { position, recipe ->
 
+                    viewModel.onChangeScrollPosition(position)
                     RecipeCard(recipe = recipe) {}
                 }
 
