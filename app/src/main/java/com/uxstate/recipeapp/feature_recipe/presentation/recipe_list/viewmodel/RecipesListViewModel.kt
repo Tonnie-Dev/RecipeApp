@@ -42,6 +42,9 @@ class RecipesListViewModel @Inject constructor(
 //value to track the page number
     var page = mutableStateOf(1)
 
+    //track the scroll position - not observable therefore not a mutable state
+    val listScrollPosition = 0
+
     init {
 
         getRecipes()
