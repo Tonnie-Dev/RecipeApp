@@ -39,7 +39,8 @@ class RecipesListViewModel @Inject constructor(
     //store scroll position - it is not mutable as we not reacting to its changes
     var scrollPosition = 0
 
-
+//value to track the page number
+    var page = mutableStateOf(1)
 
     init {
 
