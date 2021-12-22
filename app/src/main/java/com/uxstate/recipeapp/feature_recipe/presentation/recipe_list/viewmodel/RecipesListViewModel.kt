@@ -54,11 +54,19 @@ class RecipesListViewModel @Inject constructor(
         getRecipes()
     }
 
-    //get recipes
-    fun getRecipes() {
+
+
+    fun firstPageCall(){
+
+
+    }
+
+
+    //get recipes - 1st call, page number = 1
+   private fun getRecipes(token: String, page:Int, query:String) {
 
         //listen to flow emissions from usecase using onEach{}
-        useCase(token = token, page = 1, query = query.value).onEach {
+        useCase(token = token, page = page, query = query).onEach {
 
                 emission ->
             //modify state according to the emission
@@ -99,7 +107,7 @@ class RecipesListViewModel @Inject constructor(
 
     }
 
-    //fxn to get the next page items from the api
+    //fxn to get the next page(2nd search items from the api
 
     fun nextPage() {
 
@@ -120,6 +128,14 @@ class RecipesListViewModel @Inject constructor(
            //add delay to see the loading
 
            delay(1000)
+
+           //2nd api loading when page exceed 1
+
+           if (page.value>1 ){
+
+
+               val result = useCase()
+           }
        }
    }
     }
