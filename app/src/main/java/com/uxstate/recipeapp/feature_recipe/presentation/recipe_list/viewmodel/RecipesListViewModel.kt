@@ -152,7 +152,7 @@ class RecipesListViewModel @Inject constructor(
 
             selectedCategory.value = null
         }
-
+resetSearchState()
     }
 
 
@@ -181,7 +181,7 @@ class RecipesListViewModel @Inject constructor(
     }
 
     //keeps track of the scroll position
-    fun onChangeScrollPosition(position: Int) {
+    private fun onChangeScrollPosition(position: Int) {
 
         listScrollPosition = position
     }
