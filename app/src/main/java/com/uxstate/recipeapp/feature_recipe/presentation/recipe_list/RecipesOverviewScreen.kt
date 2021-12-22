@@ -39,6 +39,10 @@ fun RecipesOverviewScreen(
     val query by viewModel.query
     val categories = FoodCategory.values()
             .toList()
+
+    //observe page change
+    val page by viewModel.page
+    
     val scrollState = rememberScrollState()
     //retrieve selected category from the viewModel
     val selectedCategory by viewModel.selectedCategory
