@@ -10,8 +10,11 @@ import com.uxstate.recipeapp.feature_recipe.domain.use_cases.GetRecipesUseCase
 import com.uxstate.recipeapp.feature_recipe.presentation.recipe_list.FoodCategory
 import com.uxstate.recipeapp.feature_recipe.presentation.recipe_list.getFoodCategory
 import dagger.hilt.android.lifecycle.HiltViewModel
+import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.launchIn
 import kotlinx.coroutines.flow.onEach
+import kotlinx.coroutines.launch
+import timber.log.Timber
 import javax.inject.Inject
 import javax.inject.Named
 
@@ -100,16 +103,25 @@ class RecipesListViewModel @Inject constructor(
 
     fun nextPage() {
 
-        //lock to prevent loading of page too quickly when you reach the bottom
-        if ((scrollPosition + 1) >= (page.value * PAGE_SIZE)) {
+   viewModelScope.launch {
 
-            //means bottom of the page has been reached - so show loading
+       //lock to prevent loading of page too quickly when you reach the bottom
+       if ((scrollPosition + 1) >= (page.value * PAGE_SIZE)) {
 
-            recipesListState.value = recipesListState.value.copy(loading = true)
-            //at that point increment the page number
+           //means bottom of the page has been reached - so show loading
 
-            incrementPageNumber()
-        }
+           recipesListState.value = recipesListState.value.copy(loading = true)
+           //at that point increment the page number
+
+           incrementPageNumber()
+
+           Timber.i("Next Page Triggered - pageNo is ${page.value}")
+
+           //add delay to see the loading
+
+           delay(1000)
+       }
+   }
     }
 
 
