@@ -94,7 +94,7 @@ class RecipesListViewModel @Inject constructor(
 
     fun nextPageCall() {
 
-        viewModelScope.launch {
+
 
             //lock to prevent loading of page too quickly when you reach the bottom
             if ((listScrollPosition + 1) >= (page.value * PAGE_SIZE)) {
@@ -110,7 +110,7 @@ class RecipesListViewModel @Inject constructor(
 
                 //add delay to see the loading
 
-                delay(1000)
+                //delay(1000)
 
                 //2nd api loading when page exceed 1 - prevent duplicate list being loaded
 
@@ -124,7 +124,7 @@ class RecipesListViewModel @Inject constructor(
                 //hide progress bar
                 recipesListState.value = recipesListState.value.copy(loading = false)
             }
-        }
+
     }
 
 
