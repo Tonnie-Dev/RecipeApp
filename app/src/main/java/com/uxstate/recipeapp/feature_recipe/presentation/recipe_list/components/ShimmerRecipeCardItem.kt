@@ -2,10 +2,12 @@ package com.uxstate.recipeapp.feature_recipe.presentation.recipe_list.components
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.unit.dp
+import com.uxstate.recipeapp.feature_recipe.presentation.recipe_list.anim.ShimmerAnimation
 
 @Composable
 fun ShimmerRecipeCardItem(
@@ -29,6 +31,22 @@ fun ShimmerRecipeCardItem(
                     .background(brush = brush)
         )
 
+    }
+
+
+}
+
+
+@Composable
+fun ShowShimmer() {
+    LazyColumn() {
+
+        repeat(5) {
+
+            item {
+                ShimmerAnimation()
+            }
+        }
     }
 
 

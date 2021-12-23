@@ -19,10 +19,7 @@ import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavController
 import com.uxstate.recipeapp.feature_recipe.presentation.recipe_list.anim.ShimmerAnimation
-import com.uxstate.recipeapp.feature_recipe.presentation.recipe_list.components.ChipsRow
-import com.uxstate.recipeapp.feature_recipe.presentation.recipe_list.components.CircularIndeterminateProgressBar
-import com.uxstate.recipeapp.feature_recipe.presentation.recipe_list.components.RecipeCard
-import com.uxstate.recipeapp.feature_recipe.presentation.recipe_list.components.SearchTextField
+import com.uxstate.recipeapp.feature_recipe.presentation.recipe_list.components.*
 import com.uxstate.recipeapp.feature_recipe.presentation.recipe_list.viewmodel.PAGE_SIZE
 import com.uxstate.recipeapp.feature_recipe.presentation.recipe_list.viewmodel.RecipesListViewModel
 
@@ -108,17 +105,9 @@ fun RecipesOverviewScreen(
 
             if (listState.loading && listState.recipes.isEmpty()) {
 
-                //CircularProgressIndicator(modifier = Modifier.align(Alignment.Center))
+               ShowShimmer()
 
-                LazyColumn() {
 
-                    repeat(5) {
-
-                        item {
-                            ShimmerAnimation()
-                        }
-                    }
-                }
             }
 
             else {
