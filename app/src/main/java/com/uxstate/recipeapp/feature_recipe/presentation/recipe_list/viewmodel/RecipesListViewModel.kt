@@ -80,12 +80,13 @@ class RecipesListViewModel @Inject constructor(
 
             }catch (e:Exception){
 
+                Timber.i("onTriggerEvent: Exception $e, Cause: ${e.cause})
 
             }
         }
     }
 
-    fun firstPageCall() {
+   private suspend fun firstPageCall() {
         getRecipes(token = token, page = 1, query = query.value)
 
     }
