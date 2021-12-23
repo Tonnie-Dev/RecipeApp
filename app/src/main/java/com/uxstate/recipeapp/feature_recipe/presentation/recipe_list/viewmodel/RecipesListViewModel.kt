@@ -80,19 +80,19 @@ class RecipesListViewModel @Inject constructor(
 
             }catch (e:Exception){
 
-                Timber.i("onTriggerEvent: Exception $e, Cause: ${e.cause})
+                Timber.i("onTriggerEvent: Exception $e, Cause: ${e.cause}")
 
             }
         }
     }
 
-   private suspend fun firstPageCall() {
+   private fun firstPageCall() {
         getRecipes(token = token, page = 1, query = query.value)
 
     }
     //fxn to get the next page(2nd search items from the api
 
-    fun nextPageCall() {
+    private fun nextPageCall() {
 
 
 
