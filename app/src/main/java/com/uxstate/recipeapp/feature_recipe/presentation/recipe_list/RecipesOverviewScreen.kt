@@ -49,7 +49,7 @@ fun RecipesOverviewScreen(
     val scrollPosition: Int = viewModel.categoryScrollPosition
 
     val coroutineScope = rememberCoroutineScope()
-    //add containing column
+
 
 
     Scaffold(
@@ -112,6 +112,7 @@ fun RecipesOverviewScreen(
                     itemsIndexed(items = listState.recipes) { position, recipe ->
 
                         Timber.i("My Scroll Position is: $position")
+                        Timber.i("My Recipe  is: ${recipe.title} & ${recipe.rating}")
                         viewModel.onChangeRecipeScrollPosition(position)
 
 

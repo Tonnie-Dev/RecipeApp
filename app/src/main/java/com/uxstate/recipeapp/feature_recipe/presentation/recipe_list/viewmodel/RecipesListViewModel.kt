@@ -88,6 +88,7 @@ class RecipesListViewModel @Inject constructor(
 
 
                     getRecipes(token = token, page = page.value, query = query.value)
+                    appendRecipes(recipesListState.value.recipes)
                 }
 
                 //hide progress bar
@@ -99,7 +100,7 @@ class RecipesListViewModel @Inject constructor(
 
     //get recipes - 1st call, page number = 1
     private fun getRecipes(token: String, page: Int, query: String) {
-
+        resetSearchState()
         //listen to flow emissions from usecase using onEach{}
         useCase(token = token, page = page, query = query).onEach {
 
@@ -134,7 +135,7 @@ class RecipesListViewModel @Inject constructor(
                         recipes = emission.data ?: emptyList()
                     )
 
-                    appendRecipes(recipesListState.value.recipes)
+
                 }
 
             }
