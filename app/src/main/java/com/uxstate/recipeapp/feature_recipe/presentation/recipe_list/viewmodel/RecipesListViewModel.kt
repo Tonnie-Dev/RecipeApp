@@ -9,12 +9,14 @@ import com.uxstate.recipeapp.feature_recipe.domain.model.Recipe
 import com.uxstate.recipeapp.feature_recipe.domain.use_cases.GetRecipesUseCase
 import com.uxstate.recipeapp.feature_recipe.presentation.recipe_list.FoodCategory
 import com.uxstate.recipeapp.feature_recipe.presentation.recipe_list.getFoodCategory
+import com.uxstate.recipeapp.feature_recipe.presentation.recipe_list.viewmodel.RecipeListEvent.*
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.launchIn
 import kotlinx.coroutines.flow.onEach
 import kotlinx.coroutines.launch
 import timber.log.Timber
+import java.lang.Exception
 import javax.inject.Inject
 import javax.inject.Named
 
@@ -55,6 +57,30 @@ class RecipesListViewModel @Inject constructor(
         firstPageCall()
     }
 
+
+    fun  onTriggerEvent(event: RecipeListEvent){
+
+        viewModelScope.launch {
+
+            try {
+
+
+                when(event){
+
+
+                    is FirstPageEvent -> {
+
+                        firstPageCall()
+                    }
+                    is NextPageEvent -> {
+
+                        nextPage()
+                    }
+                }
+
+            }catch (e:Exception){}
+        }
+    }
 
     fun firstPageCall() {
         getRecipes(token = token, page = 1, query = query.value)
