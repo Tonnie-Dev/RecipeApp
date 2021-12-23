@@ -264,4 +264,10 @@ categoryScrollPosition = position
         savedStateHandle.set(STATE_KEY_PAGE, pageNumber)
 
     }
+
+    private fun setSelectedCategory(category: FoodCategory?){
+
+        selectedCategory.value = category
+        savedStateHandle.set(STATE_KEY_SELECTED_CATEGORY, category)
+    }
 }
