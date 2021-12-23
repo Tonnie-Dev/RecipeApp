@@ -156,7 +156,7 @@ fun RecipesOverviewScreen(
 
 
         }
-
+        CircularIndeterminateProgressBar(isDisplayed = loading, verticalBias = 0.3f)
     }
 
 
