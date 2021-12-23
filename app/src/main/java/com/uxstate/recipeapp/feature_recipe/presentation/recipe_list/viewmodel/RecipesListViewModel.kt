@@ -270,4 +270,10 @@ categoryScrollPosition = position
         selectedCategory.value = category
         savedStateHandle.set(STATE_KEY_SELECTED_CATEGORY, category)
     }
+
+    private fun setQuery(searchQuery: String)    {
+
+        query.value =searchQuery
+        savedStateHandle.set(STATE_KEY_QUERY, searchQuery)
+    }
 }
