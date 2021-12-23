@@ -119,7 +119,7 @@ fun RecipesOverviewScreen(
                         //trigger for pagination
                         if ((position + 1) >= (page * PAGE_SIZE) && !listState.loading) {
 
-                            viewModel.nextPage()
+                            viewModel.nextPageCall()
 
 
                         }

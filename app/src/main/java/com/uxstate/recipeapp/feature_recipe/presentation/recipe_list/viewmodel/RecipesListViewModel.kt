@@ -74,11 +74,14 @@ class RecipesListViewModel @Inject constructor(
                     }
                     is NextPageEvent -> {
 
-                        nextPage()
+                        nextPageCall()
                     }
                 }
 
-            }catch (e:Exception){}
+            }catch (e:Exception){
+
+
+            }
         }
     }
 
@@ -88,7 +91,7 @@ class RecipesListViewModel @Inject constructor(
     }
     //fxn to get the next page(2nd search items from the api
 
-    fun nextPage() {
+    fun nextPageCall() {
 
         viewModelScope.launch {
 
