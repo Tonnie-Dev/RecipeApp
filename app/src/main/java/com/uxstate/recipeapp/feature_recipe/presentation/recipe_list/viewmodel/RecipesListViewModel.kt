@@ -45,6 +45,7 @@ class RecipesListViewModel @Inject constructor(
 
     //value to track the page number
     var page = mutableStateOf(1)
+        private set
 
     //track the scroll position - not observable therefore not a mutable state
     private var listScrollPosition = 0
@@ -55,7 +56,7 @@ class RecipesListViewModel @Inject constructor(
     }
 
 
- fun firstPageCall() {
+    fun firstPageCall() {
         getRecipes(token = token, page = 1, query = query.value)
 
     }
@@ -81,7 +82,7 @@ class RecipesListViewModel @Inject constructor(
 
                 delay(1000)
 
-                //2nd api loading when page exceed 1
+                //2nd api loading when page exceed 1 - prevent duplicate list being loaded
 
                 if (page.value > 1) {
 
@@ -152,7 +153,7 @@ class RecipesListViewModel @Inject constructor(
 
             selectedCategory.value = null
         }
-resetSearchState()
+        resetSearchState()
     }
 
 
@@ -177,11 +178,13 @@ resetSearchState()
 
     private fun incrementPageNumber() {
 
+        Timber.i("Increment Page No fxn called")
+
         page.value = page.value + 1
     }
 
     //keeps track of the scroll position
-  fun onChangeScrollPosition(position: Int) {
+    fun onChangeScrollPosition(position: Int) {
 
         listScrollPosition = position
     }
@@ -196,9 +199,8 @@ resetSearchState()
     }
 
 
-
     //called when new search is executed
-    private fun resetSearchState(){
+    private fun resetSearchState() {
 
         recipesListState.value = recipesListState.value.copy(recipes = listOf())
         page.value = 1

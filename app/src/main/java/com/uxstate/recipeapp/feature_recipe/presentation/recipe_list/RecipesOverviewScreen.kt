@@ -20,6 +20,7 @@ import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavController
 import com.uxstate.recipeapp.feature_recipe.presentation.recipe_list.anim.ShimmerAnimation
 import com.uxstate.recipeapp.feature_recipe.presentation.recipe_list.components.ChipsRow
+import com.uxstate.recipeapp.feature_recipe.presentation.recipe_list.components.CircularIndeterminateProgressBar
 import com.uxstate.recipeapp.feature_recipe.presentation.recipe_list.components.RecipeCard
 import com.uxstate.recipeapp.feature_recipe.presentation.recipe_list.components.SearchTextField
 import com.uxstate.recipeapp.feature_recipe.presentation.recipe_list.viewmodel.PAGE_SIZE
@@ -156,7 +157,7 @@ fun RecipesOverviewScreen(
 
 
         }
-        CircularIndeterminateProgressBar(isDisplayed = loading, verticalBias = 0.3f)
+        CircularIndeterminateProgressBar(isDisplayed = listState.loading, verticalBias = 0.3f)
     }
 
 
