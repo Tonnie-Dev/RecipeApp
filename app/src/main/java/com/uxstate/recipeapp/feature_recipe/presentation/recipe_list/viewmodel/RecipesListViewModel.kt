@@ -34,7 +34,7 @@ const val STATE_KEY_SELECTED_CATEGORY = "recipe.state.query.selected_category"
 class RecipesListViewModel @Inject constructor(
     private val useCase: GetRecipesUseCase,
     @Named("auth_token") private val token: String,
-    savedStateHandle: SavedStateHandle
+    private val savedStateHandle: SavedStateHandle
 ) :
     ViewModel() {
 
@@ -253,5 +253,9 @@ categoryScrollPosition = position
         selectedCategory.value = null
     }
 
+    private fun setListScrollPosition(position: Int){
+        listScrollPosition = position
+        savedStateHandle.set(STATE_KEY_LIST_POSITION, position)
+    }
 
 }
