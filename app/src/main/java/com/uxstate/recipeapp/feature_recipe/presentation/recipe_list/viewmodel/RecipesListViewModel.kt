@@ -250,7 +250,7 @@ categoryScrollPosition = position
     fun onClearTextField() {
 
         query.value = ""
-        selectedCategory.value = null
+        setSelectedCategory(null)
     }
 
     private fun setListScrollPosition(position: Int){
