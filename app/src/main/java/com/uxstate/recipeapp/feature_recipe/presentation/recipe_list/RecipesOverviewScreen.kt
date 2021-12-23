@@ -20,6 +20,8 @@ import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavController
 import com.uxstate.recipeapp.feature_recipe.presentation.recipe_list.components.*
 import com.uxstate.recipeapp.feature_recipe.presentation.recipe_list.viewmodel.PAGE_SIZE
+import com.uxstate.recipeapp.feature_recipe.presentation.recipe_list.viewmodel.RecipeListEvent
+import com.uxstate.recipeapp.feature_recipe.presentation.recipe_list.viewmodel.RecipeListEvent.*
 import com.uxstate.recipeapp.feature_recipe.presentation.recipe_list.viewmodel.RecipesListViewModel
 import timber.log.Timber
 
@@ -67,7 +69,7 @@ fun RecipesOverviewScreen(
                     SearchTextField(
                         value = query,
                         onValueChanged = viewModel::onSearchQueryChange,
-                        onImeAction = viewModel::firstPageCall,
+                        onImeAction = {viewModel.onTriggerEvent(FirstPageEvent)},
                         onClearTextField = viewModel::onClearTextField,
                         onToggleTheme = onToggleTheme
                     )
@@ -84,7 +86,7 @@ fun RecipesOverviewScreen(
                             viewModel.onCategoryScrollPositionChange(scrollState.value)
 
                         },
-                        onExecuteSearch = viewModel::firstPageCall
+                        onExecuteSearch = {viewModel.onTriggerEvent(FirstPageEvent)}
                     )
 
 
@@ -119,7 +121,7 @@ fun RecipesOverviewScreen(
                         //trigger for pagination
                         if ((position + 1) >= (page * PAGE_SIZE) && !listState.loading) {
 
-                            viewModel.nextPageCall()
+                            viewModel.onTriggerEvent(NextPageEvent)
 
 
                         }
