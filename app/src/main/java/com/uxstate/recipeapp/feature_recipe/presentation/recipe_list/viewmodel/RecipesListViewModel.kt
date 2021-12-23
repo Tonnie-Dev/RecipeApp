@@ -258,4 +258,10 @@ categoryScrollPosition = position
         savedStateHandle.set(STATE_KEY_LIST_POSITION, position)
     }
 
+
+    private fun setPage(pageNumber:Int){
+        page.value = pageNumber
+        savedStateHandle.set(STATE_KEY_PAGE, pageNumber)
+
+    }
 }
