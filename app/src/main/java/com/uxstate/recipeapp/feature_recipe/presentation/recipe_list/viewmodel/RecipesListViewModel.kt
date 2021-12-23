@@ -2,6 +2,7 @@ package com.uxstate.recipeapp.feature_recipe.presentation.recipe_list.viewmodel
 
 import androidx.compose.runtime.MutableState
 import androidx.compose.runtime.mutableStateOf
+import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.uxstate.recipeapp.core.util.Resource
@@ -26,7 +27,8 @@ const val PAGE_SIZE = 30
 @HiltViewModel
 class RecipesListViewModel @Inject constructor(
     private val useCase: GetRecipesUseCase,
-    @Named("auth_token") private val token: String
+    @Named("auth_token") private val token: String,
+    savedStateHandle: SavedStateHandle
 ) :
     ViewModel() {
 
