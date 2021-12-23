@@ -1,5 +1,6 @@
 package com.uxstate.recipeapp.feature_recipe.presentation.recipe_list.viewmodel
 
+import android.util.Log
 import androidx.compose.runtime.MutableState
 import androidx.compose.runtime.mutableStateOf
 import androidx.lifecycle.SavedStateHandle
@@ -61,7 +62,20 @@ class RecipesListViewModel @Inject constructor(
    private var listScrollPosition = 0
 
     init {
-
+        savedStateHandle.get<Int>(STATE_KEY_PAGE)?.let { p ->
+            Timber.i("restoring page: ${p}")
+            setPage(p)
+        }
+        savedStateHandle.get<String>(STATE_KEY_QUERY)?.let { q ->
+            setQuery(q)
+        }
+        savedStateHandle.get<Int>(STATE_KEY_LIST_POSITION)?.let { p ->
+            Timber.i("restoring scroll position: ${p}")
+            setListScrollPosition(p)
+        }
+        savedStateHandle.get<FoodCategory>(STATE_KEY_SELECTED_CATEGORY)?.let { c ->
+            setSelectedCategory(c)
+        }
         onTriggerEvent(FirstPageEvent)
     }
 
@@ -186,7 +200,7 @@ class RecipesListViewModel @Inject constructor(
 
     fun onSearchQueryChange(text: String) {
 setQuery(text)
-   
+
 
         if (text.isBlank()) {
 
