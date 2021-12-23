@@ -248,7 +248,7 @@ categoryScrollPosition = position
     }
 
     fun onClearTextField() {
-
+setQuery("")
         query.value = ""
         setSelectedCategory(null)
     }
