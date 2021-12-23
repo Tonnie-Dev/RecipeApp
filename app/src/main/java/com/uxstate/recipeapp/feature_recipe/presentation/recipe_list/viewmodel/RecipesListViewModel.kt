@@ -185,8 +185,8 @@ class RecipesListViewModel @Inject constructor(
 
 
     fun onSearchQueryChange(text: String) {
-
-        query.value = text
+setQuery(text)
+   
 
         if (text.isBlank()) {
 
@@ -249,7 +249,7 @@ categoryScrollPosition = position
 
     fun onClearTextField() {
 setQuery("")
-        query.value = ""
+
         setSelectedCategory(null)
     }
 
