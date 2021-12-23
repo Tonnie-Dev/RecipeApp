@@ -5,4 +5,6 @@ sealed class RecipeListEvent {
 
     object FirstPageEvent : RecipeListEvent()
     object NextPageEvent : RecipeListEvent()
+    //restore after process death
+    object RestoreStateEvent:RecipeListEvent()
 }
