@@ -105,7 +105,22 @@ fun RecipesOverviewScreen(
                     .background(color = MaterialTheme.colors.surface)
         ) {
 
+            if (listState.loading && listState.recipes.isEmpty()) {
 
+                //CircularProgressIndicator(modifier = Modifier.align(Alignment.Center))
+
+                LazyColumn() {
+
+                    repeat(5) {
+
+                        item {
+                            ShimmerAnimation()
+                        }
+                    }
+                }
+            }
+
+            else {
             LazyColumn() {
 
                 itemsIndexed(items = listState.recipes) { position, recipe ->
@@ -122,23 +137,10 @@ fun RecipesOverviewScreen(
                     RecipeCard(recipe = recipe) {}
                 }
 
-            }
+            }}
 
 
-            if (listState.loading && listState.recipes.isEmpty()) {
 
-                //CircularProgressIndicator(modifier = Modifier.align(Alignment.Center))
-
-                LazyColumn() {
-
-                    repeat(5) {
-
-                        item {
-                            ShimmerAnimation()
-                        }
-                    }
-                }
-            }
 
             if (listState.error.isNotEmpty()) {
                 Text(
