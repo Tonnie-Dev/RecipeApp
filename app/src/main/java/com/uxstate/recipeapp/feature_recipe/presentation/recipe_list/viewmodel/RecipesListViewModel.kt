@@ -201,7 +201,7 @@ class RecipesListViewModel @Inject constructor(
         //get FoodCategory Enum
         val newCategory = getFoodCategory(category)
 
-        selectedCategory.value = newCategory
+      setSelectedCategory(newCategory )
 
         //call search with new category string
         onSearchQueryChange(category)
