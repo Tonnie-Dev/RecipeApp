@@ -41,14 +41,14 @@ class RecipesListViewModel @Inject constructor(
 
 
     //store scroll position - it is not mutable as we not reacting to its changes
-    var scrollPosition = 0
+    var categoryScrollPosition = 0
 
     //value to track the page number
     var page = mutableStateOf(1)
         private set
 
     //track the scroll position - not observable therefore not a mutable state
-    private var listScrollPosition = 0
+   private var listScrollPosition = 0
 
     init {
 
@@ -67,7 +67,7 @@ class RecipesListViewModel @Inject constructor(
         viewModelScope.launch {
 
             //lock to prevent loading of page too quickly when you reach the bottom
-            if ((scrollPosition + 1) >= (page.value * PAGE_SIZE)) {
+            if ((listScrollPosition + 1) >= (page.value * PAGE_SIZE)) {
 
                 //means bottom of the page has been reached - so show loading
 
@@ -172,7 +172,7 @@ class RecipesListViewModel @Inject constructor(
     fun onCategoryScrollPositionChange(position: Int) {
 
 
-        scrollPosition = position
+categoryScrollPosition = position
     }
 
 
@@ -184,7 +184,7 @@ class RecipesListViewModel @Inject constructor(
     }
 
     //keeps track of the scroll position
-    fun onChangeScrollPosition(position: Int) {
+    fun onChangeRecipeScrollPosition(position: Int) {
 
         listScrollPosition = position
     }
@@ -204,7 +204,7 @@ class RecipesListViewModel @Inject constructor(
 
         recipesListState.value = recipesListState.value.copy(recipes = listOf())
         page.value = 1
-        onChangeScrollPosition(0)
+        onChangeRecipeScrollPosition(0)
 
     }
 

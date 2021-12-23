@@ -18,10 +18,10 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavController
-import com.uxstate.recipeapp.feature_recipe.presentation.recipe_list.anim.ShimmerAnimation
 import com.uxstate.recipeapp.feature_recipe.presentation.recipe_list.components.*
 import com.uxstate.recipeapp.feature_recipe.presentation.recipe_list.viewmodel.PAGE_SIZE
 import com.uxstate.recipeapp.feature_recipe.presentation.recipe_list.viewmodel.RecipesListViewModel
+import timber.log.Timber
 
 @ExperimentalComposeUiApi
 @Composable
@@ -46,7 +46,7 @@ fun RecipesOverviewScreen(
     val selectedCategory by viewModel.selectedCategory
 
     //retrieve scroll position
-    val scrollPosition: Int = viewModel.scrollPosition
+    val scrollPosition: Int = viewModel.categoryScrollPosition
 
     val coroutineScope = rememberCoroutineScope()
     //add containing column
@@ -104,30 +104,30 @@ fun RecipesOverviewScreen(
         ) {
 
             if (listState.loading && listState.recipes.isEmpty()) {
+//list.isEmpty() ensures we only show shimmer if there is brand new search
+                ShowShimmer()
+            } else {
+                LazyColumn() {
 
-               ShowShimmer()
+                    itemsIndexed(items = listState.recipes) { position, recipe ->
 
-
-            }
-
-            else {
-            LazyColumn() {
-
-                itemsIndexed(items = listState.recipes) { position, recipe ->
-
-                    viewModel.onChangeScrollPosition(position)
-
-                    if ((position + 1) >= (page * PAGE_SIZE) && !listState.loading) {
-
-                        viewModel.nextPage()
+                        Timber.i("My Scroll Position is: $position")
+                        viewModel.onChangeRecipeScrollPosition(position)
 
 
+                        //trigger for pagination
+                        if ((position + 1) >= (page * PAGE_SIZE) && !listState.loading) {
+
+                            viewModel.nextPage()
+
+
+                        }
+
+                        RecipeCard(recipe = recipe) {}
                     }
 
-                    RecipeCard(recipe = recipe) {}
                 }
-
-            }}
+            }
 
 
 
