@@ -225,7 +225,7 @@ categoryScrollPosition = position
     //keeps track of the scroll position
     fun onChangeRecipeScrollPosition(position: Int) {
 
-        listScrollPosition = position
+     setListScrollPosition(position = position)
     }
 
 
