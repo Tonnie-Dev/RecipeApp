@@ -219,7 +219,7 @@ categoryScrollPosition = position
 
         Timber.i("Increment Page No fxn called")
 
-        page.value = page.value + 1
+       setPage( page.value + 1)
     }
 
     //keeps track of the scroll position
