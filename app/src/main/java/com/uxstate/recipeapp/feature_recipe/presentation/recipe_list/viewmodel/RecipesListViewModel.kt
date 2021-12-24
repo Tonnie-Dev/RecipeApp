@@ -169,17 +169,20 @@ class RecipesListViewModel @Inject constructor(
         val results: MutableList<Recipe> = mutableListOf()
         for (pg in 1..page.value) {
 
-            val result = getRecipes(token = token,
+            getRecipes(
+                token = token,
                 page = page.value,
-                query = query.value)
+                query = query.value
+            )
 
             results.addAll(recipesListState.value.recipes)
 
-            if (pg == page.value ){
+            if (pg == page.value) {
 
                 //done - reached at the page before process death
 
-                recipesListState.value = recipesListState.value.copy(recipes = results, loading = false)
+                recipesListState.value =
+                    recipesListState.value.copy( loading = false)
             }
         }
     }
@@ -265,7 +268,7 @@ class RecipesListViewModel @Inject constructor(
 
     private fun incrementPageNumber() {
 
-        Timber.i("Increment Page No fxn called")
+
 
         setPage(page.value + 1)
     }
@@ -280,9 +283,15 @@ class RecipesListViewModel @Inject constructor(
     //append new recipes to the current list of recipes
     private fun appendRecipes(recipes: List<Recipe>) {
 
+        Timber.i("Entrant list size is: ${recipes.size}")
+        Timber.i("Current list size is: ${recipesListState.value.recipes.size}")
         val currentList = ArrayList(recipesListState.value.recipes)
-        currentList.addAll(recipes)
-        recipesListState.value = recipesListState.value.copy(recipes = currentList)
+             val updatedList = currentList.plus(recipes)
+
+        Timber.i("Update list size is now: ${recipesListState.value.recipes.size}")
+
+
+        recipesListState.value = recipesListState.value.copy(recipes = updatedList)
     }
 
 

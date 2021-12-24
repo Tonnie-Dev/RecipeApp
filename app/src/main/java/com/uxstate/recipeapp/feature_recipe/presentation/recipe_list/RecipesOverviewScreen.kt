@@ -109,27 +109,7 @@ fun RecipesOverviewScreen(
 //list.isEmpty() ensures we only show shimmer if there is brand new search
                 ShowShimmer()
             } else {
-                LazyColumn() {
 
-                    itemsIndexed(items = listState.recipes) { position, recipe ->
-
-                        Timber.i("My Scroll Position is: $position")
-                        Timber.i("My Recipe  is: ${recipe.title} & ${recipe.rating}")
-                        viewModel.onChangeRecipeScrollPosition(position)
-
-
-                        //trigger for pagination
-                        if ((position + 1) >= (page * PAGE_SIZE) && !listState.loading) {
-
-                            viewModel.onTriggerEvent(NextPageEvent)
-
-
-                        }
-
-                        RecipeCard(recipe = recipe) {}
-                    }
-
-                }
             }
 
 
