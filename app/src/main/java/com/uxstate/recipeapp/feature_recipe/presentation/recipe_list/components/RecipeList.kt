@@ -6,14 +6,15 @@ import androidx.compose.runtime.Composable
 import com.uxstate.recipeapp.feature_recipe.domain.model.Recipe
 import com.uxstate.recipeapp.feature_recipe.presentation.recipe_list.viewmodel.PAGE_SIZE
 import com.uxstate.recipeapp.feature_recipe.presentation.recipe_list.viewmodel.RecipeListEvent
-import timber.log.Timber
 
 @Composable
-fun RecipeList(recipes:List<Recipe>,
-onChangeRecipeScrollPosition:(Int)-> Unit,
-page:Int,
-loading:Boolean,
-               onTriggerEvent:(RecipeListEvent)-> Unit   ) {
+fun RecipeList(
+    recipes: List<Recipe>,
+    onChangeRecipeScrollPosition: (Int) -> Unit,
+    page: Int,
+    loading: Boolean,
+    onTriggerEvent: (RecipeListEvent) -> Unit
+) {
 
 
     LazyColumn() {
@@ -27,7 +28,7 @@ loading:Boolean,
             //trigger for pagination
             if ((position + 1) >= (page * PAGE_SIZE) && !loading) {
 
-              onTriggerEvent(RecipeListEvent.NextPageEvent)
+                onTriggerEvent(RecipeListEvent.NextPageEvent)
 
 
             }

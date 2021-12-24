@@ -2,8 +2,6 @@ package com.uxstate.recipeapp.feature_recipe.presentation.recipe_list
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
-import androidx.compose.foundation.lazy.LazyColumn
-import androidx.compose.foundation.lazy.itemsIndexed
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Scaffold
@@ -19,11 +17,8 @@ import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavController
 import com.uxstate.recipeapp.feature_recipe.presentation.recipe_list.components.*
-import com.uxstate.recipeapp.feature_recipe.presentation.recipe_list.viewmodel.PAGE_SIZE
-import com.uxstate.recipeapp.feature_recipe.presentation.recipe_list.viewmodel.RecipeListEvent
-import com.uxstate.recipeapp.feature_recipe.presentation.recipe_list.viewmodel.RecipeListEvent.*
+import com.uxstate.recipeapp.feature_recipe.presentation.recipe_list.viewmodel.RecipeListEvent.FirstPageEvent
 import com.uxstate.recipeapp.feature_recipe.presentation.recipe_list.viewmodel.RecipesListViewModel
-import timber.log.Timber
 
 @ExperimentalComposeUiApi
 @Composable
@@ -69,7 +64,7 @@ fun RecipesOverviewScreen(
                     SearchTextField(
                         value = query,
                         onValueChanged = viewModel::onSearchQueryChange,
-                        onImeAction = {viewModel.onTriggerEvent(FirstPageEvent)},
+                        onImeAction = { viewModel.onTriggerEvent(FirstPageEvent) },
                         onClearTextField = viewModel::onClearTextField,
                         onToggleTheme = onToggleTheme
                     )
@@ -86,7 +81,7 @@ fun RecipesOverviewScreen(
                             viewModel.onCategoryScrollPositionChange(scrollState.value)
 
                         },
-                        onExecuteSearch = {viewModel.onTriggerEvent(FirstPageEvent)}
+                        onExecuteSearch = { viewModel.onTriggerEvent(FirstPageEvent) }
                     )
 
 
@@ -109,7 +104,13 @@ fun RecipesOverviewScreen(
 //list.isEmpty() ensures we only show shimmer if there is brand new search
                 ShowShimmer()
             } else {
-
+                RecipeList(
+                    recipes = listState.recipes,
+                    onChangeRecipeScrollPosition = viewModel::onChangeRecipeScrollPosition,
+                    page = page,
+                    loading = listState.loading,
+                    onTriggerEvent = viewModel::onTriggerEvent
+                )
             }
 
 
