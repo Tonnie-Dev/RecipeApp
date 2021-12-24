@@ -76,6 +76,14 @@ class RecipesListViewModel @Inject constructor(
         savedStateHandle.get<FoodCategory>(STATE_KEY_SELECTED_CATEGORY)?.let { c ->
             setSelectedCategory(c)
         }
+
+        //check if the user was doing something before process death
+        if(listScrollPosition!=0){
+            onTriggerEvent(RestoreStateEvent)
+        }else{
+
+            onTriggerEvent(FirstPageEvent)
+        }
         onTriggerEvent(FirstPageEvent)
     }
 
