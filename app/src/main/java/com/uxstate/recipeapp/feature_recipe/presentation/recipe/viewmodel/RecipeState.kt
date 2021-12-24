@@ -1,4 +1,4 @@
-package com.uxstate.recipeapp.feature_recipe.presentation.recipe.components
+package com.uxstate.recipeapp.feature_recipe.presentation.recipe.viewmodel
 
 import com.uxstate.recipeapp.feature_recipe.domain.model.Recipe
 
