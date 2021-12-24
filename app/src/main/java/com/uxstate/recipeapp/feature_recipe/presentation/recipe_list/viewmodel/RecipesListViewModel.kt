@@ -1,6 +1,5 @@
 package com.uxstate.recipeapp.feature_recipe.presentation.recipe_list.viewmodel
 
-import android.util.Log
 import androidx.compose.runtime.MutableState
 import androidx.compose.runtime.mutableStateOf
 import androidx.lifecycle.SavedStateHandle
@@ -13,12 +12,10 @@ import com.uxstate.recipeapp.feature_recipe.presentation.recipe_list.FoodCategor
 import com.uxstate.recipeapp.feature_recipe.presentation.recipe_list.getFoodCategory
 import com.uxstate.recipeapp.feature_recipe.presentation.recipe_list.viewmodel.RecipeListEvent.*
 import dagger.hilt.android.lifecycle.HiltViewModel
-import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.launchIn
 import kotlinx.coroutines.flow.onEach
 import kotlinx.coroutines.launch
 import timber.log.Timber
-import java.lang.Exception
 import javax.inject.Inject
 import javax.inject.Named
 
@@ -59,28 +56,32 @@ class RecipesListViewModel @Inject constructor(
         private set
 
     //track the scroll position - not observable therefore not a mutable state
-   private var listScrollPosition = 0
+    private var listScrollPosition = 0
 
     init {
-        savedStateHandle.get<Int>(STATE_KEY_PAGE)?.let { p ->
-            Timber.i("restoring page: ${p}")
-            setPage(p)
-        }
-        savedStateHandle.get<String>(STATE_KEY_QUERY)?.let { q ->
-            setQuery(q)
-        }
-        savedStateHandle.get<Int>(STATE_KEY_LIST_POSITION)?.let { p ->
-            Timber.i("restoring scroll position: ${p}")
-            setListScrollPosition(p)
-        }
-        savedStateHandle.get<FoodCategory>(STATE_KEY_SELECTED_CATEGORY)?.let { c ->
-            setSelectedCategory(c)
-        }
+        savedStateHandle.get<Int>(STATE_KEY_PAGE)
+                ?.let { p ->
+                    Timber.i("restoring page: ${p}")
+                    setPage(p)
+                }
+        savedStateHandle.get<String>(STATE_KEY_QUERY)
+                ?.let { q ->
+                    setQuery(q)
+                }
+        savedStateHandle.get<Int>(STATE_KEY_LIST_POSITION)
+                ?.let { p ->
+                    Timber.i("restoring scroll position: ${p}")
+                    setListScrollPosition(p)
+                }
+        savedStateHandle.get<FoodCategory>(STATE_KEY_SELECTED_CATEGORY)
+                ?.let { c ->
+                    setSelectedCategory(c)
+                }
 
         //check if the user was doing something before process death
-        if(listScrollPosition!=0){
+        if (listScrollPosition != 0) {
             onTriggerEvent(RestoreStateEvent)
-        }else{
+        } else {
 
             onTriggerEvent(FirstPageEvent)
         }
@@ -88,14 +89,14 @@ class RecipesListViewModel @Inject constructor(
     }
 
 
-    fun  onTriggerEvent(event: RecipeListEvent){
+    fun onTriggerEvent(event: RecipeListEvent) {
 
         viewModelScope.launch {
 
             try {
 
 
-                when(event){
+                when (event) {
 
 
                     is FirstPageEvent -> {
@@ -106,9 +107,14 @@ class RecipesListViewModel @Inject constructor(
 
                         nextPageCall()
                     }
+
+                    is RestoreStateEvent -> {
+
+                        restoreState()
+                    }
                 }
 
-            }catch (e:Exception){
+            } catch (e: Exception) {
 
                 Timber.i("onTriggerEvent: Exception $e, Cause: ${e.cause}")
 
@@ -116,7 +122,7 @@ class RecipesListViewModel @Inject constructor(
         }
     }
 
-   private fun firstPageCall() {
+    private fun firstPageCall() {
         getRecipes(token = token, page = 1, query = query.value)
 
     }
@@ -125,38 +131,58 @@ class RecipesListViewModel @Inject constructor(
     private fun nextPageCall() {
 
 
+        //lock to prevent loading of page too quickly when you reach the bottom
+        if ((listScrollPosition + 1) >= (page.value * PAGE_SIZE)) {
 
-            //lock to prevent loading of page too quickly when you reach the bottom
-            if ((listScrollPosition + 1) >= (page.value * PAGE_SIZE)) {
+            //means bottom of the page has been reached - so show loading
 
-                //means bottom of the page has been reached - so show loading
+            recipesListState.value = recipesListState.value.copy(loading = true)
+            //at that point increment the page number
 
-                recipesListState.value = recipesListState.value.copy(loading = true)
-                //at that point increment the page number
+            incrementPageNumber()
 
-                incrementPageNumber()
+            Timber.i("Next Page Triggered - pageNo is ${page.value}")
 
-                Timber.i("Next Page Triggered - pageNo is ${page.value}")
+            //add delay to see the loading
 
-                //add delay to see the loading
+            //delay(1000)
 
-                //delay(1000)
+            //2nd api loading when page exceed 1 - prevent duplicate list being loaded
 
-                //2nd api loading when page exceed 1 - prevent duplicate list being loaded
-
-                if (page.value > 1) {
+            if (page.value > 1) {
 
 
-                    getRecipes(token = token, page = page.value, query = query.value)
-                    appendRecipes(recipesListState.value.recipes)
-                }
-
-                //hide progress bar
-                recipesListState.value = recipesListState.value.copy(loading = false)
+                getRecipes(token = token, page = page.value, query = query.value)
+                appendRecipes(recipesListState.value.recipes)
             }
+
+            //hide progress bar
+            recipesListState.value = recipesListState.value.copy(loading = false)
+        }
 
     }
 
+
+    private fun restoreState() {
+
+        recipesListState.value = recipesListState.value.copy(loading = true)
+        val results: MutableList<Recipe> = mutableListOf()
+        for (pg in 1..page.value) {
+
+            val result = getRecipes(token = token,
+                page = page.value,
+                query = query.value)
+
+            results.addAll(recipesListState.value.recipes)
+
+            if (pg == page.value ){
+
+                //done - reached at the page before process death
+
+                recipesListState.value = recipesListState.value.copy(recipes = results, loading = false)
+            }
+        }
+    }
 
     //get recipes - 1st call, page number = 1
     private fun getRecipes(token: String, page: Int, query: String) {
@@ -207,7 +233,7 @@ class RecipesListViewModel @Inject constructor(
 
 
     fun onSearchQueryChange(text: String) {
-setQuery(text)
+        setQuery(text)
 
 
         if (text.isBlank()) {
@@ -223,7 +249,7 @@ setQuery(text)
         //get FoodCategory Enum
         val newCategory = getFoodCategory(category)
 
-      setSelectedCategory(newCategory )
+        setSelectedCategory(newCategory)
 
         //call search with new category string
         onSearchQueryChange(category)
@@ -233,7 +259,7 @@ setQuery(text)
     fun onCategoryScrollPositionChange(position: Int) {
 
 
-categoryScrollPosition = position
+        categoryScrollPosition = position
     }
 
 
@@ -241,13 +267,13 @@ categoryScrollPosition = position
 
         Timber.i("Increment Page No fxn called")
 
-       setPage( page.value + 1)
+        setPage(page.value + 1)
     }
 
     //keeps track of the scroll position
     fun onChangeRecipeScrollPosition(position: Int) {
 
-     setListScrollPosition(position = position)
+        setListScrollPosition(position = position)
     }
 
 
@@ -270,32 +296,32 @@ categoryScrollPosition = position
     }
 
     fun onClearTextField() {
-setQuery("")
+        setQuery("")
 
         setSelectedCategory(null)
     }
 
-    private fun setListScrollPosition(position: Int){
+    private fun setListScrollPosition(position: Int) {
         listScrollPosition = position
         savedStateHandle.set(STATE_KEY_LIST_POSITION, position)
     }
 
 
-    private fun setPage(pageNumber:Int){
+    private fun setPage(pageNumber: Int) {
         page.value = pageNumber
         savedStateHandle.set(STATE_KEY_PAGE, pageNumber)
 
     }
 
-    private fun setSelectedCategory(category: FoodCategory?){
+    private fun setSelectedCategory(category: FoodCategory?) {
 
         selectedCategory.value = category
         savedStateHandle.set(STATE_KEY_SELECTED_CATEGORY, category)
     }
 
-    private fun setQuery(searchQuery: String)    {
+    private fun setQuery(searchQuery: String) {
 
-        query.value =searchQuery
+        query.value = searchQuery
         savedStateHandle.set(STATE_KEY_QUERY, searchQuery)
     }
 }
