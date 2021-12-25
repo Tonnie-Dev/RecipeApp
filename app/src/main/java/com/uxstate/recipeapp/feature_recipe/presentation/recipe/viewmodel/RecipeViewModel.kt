@@ -52,7 +52,7 @@ class RecipeViewModel @Inject constructor(
 
 
     private fun getRecipe(id: Int, token: String) {
-
+Timber.i("getRecipe() called")
 
 //listen to emissions
         useCase(id = id, token = token).onEach {
@@ -71,6 +71,7 @@ class RecipeViewModel @Inject constructor(
                         error = "",
                         recipe = null
                     )
+                    Timber.i("Loading detected")
                 }
                 is Resource.Error -> {
                     recipeState.value = recipeState.value.copy(
@@ -78,6 +79,8 @@ class RecipeViewModel @Inject constructor(
                         error = result.message ?: "An Unknown Error Occurred",
                         recipe = null
                     )
+
+                    Timber.i("Error detected")
                 }
 
                 is Resource.Success -> {
@@ -96,7 +99,11 @@ Timber.i("the recipe is Recipe: ${result.data?.title}")
 
 
     fun onTriggerEvent(event: RecipeEvent){
+
+        Timber.i("onTriggerEvent called")
         try {
+            Timber.i("inside try block of onTriggerEvent()")
+
             when(event){
 
                 is GetRecipeEvent -> {

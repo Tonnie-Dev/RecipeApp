@@ -8,10 +8,10 @@ import kotlinx.coroutines.flow.flow
 
 class GetRecipeByIdUseCase(private val repository: RecipeRepository) {
 
-    operator fun invoke(token: String, id: Int): Flow<Resource<Recipe>> = flow {
+    operator fun invoke(token: String, id: Int): Flow<Resource<Recipe>> {
 
 
-        repository.getRecipeById(token = token, id = id)
+        return repository.getRecipeById(token = token, id = id)
     }
 
 
