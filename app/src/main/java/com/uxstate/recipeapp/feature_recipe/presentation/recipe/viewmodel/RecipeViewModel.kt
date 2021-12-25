@@ -27,10 +27,10 @@ class RecipeViewModel @Inject constructor(
 
     init {
 
-        saved
-        //call getRecipe()
-        // TODO: 16-Dec-21  
-        //getRecipe()
+        savedStateHandle.get<Int>("recipeId")?.let {
+            getRecipe(id = it, token = token)
+        }
+        
     }
 
 
