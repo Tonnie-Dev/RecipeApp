@@ -12,6 +12,7 @@ import com.uxstate.recipeapp.feature_recipe.presentation.recipe.viewmodel.Recipe
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.launchIn
 import kotlinx.coroutines.flow.onEach
+import java.lang.Exception
 import javax.inject.Inject
 import javax.inject.Named
 
@@ -100,6 +101,8 @@ class RecipeViewModel @Inject constructor(
                     }
                 }
             }
+        }catch (e:Exception){
+
         }
     }
 }
