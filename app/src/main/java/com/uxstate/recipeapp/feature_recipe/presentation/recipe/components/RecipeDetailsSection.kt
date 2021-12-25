@@ -47,6 +47,8 @@ fun RecipeDetailsSection(recipe: Recipe) {
 
         }
 
+Text(text = "Updated ${recipe.dateUpdate} by ${recipe.publisher}")
+
     }
 
 
