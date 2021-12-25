@@ -4,6 +4,7 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.uxstate.recipeapp.core.util.Constants
 import com.uxstate.recipeapp.core.util.Resource
 import com.uxstate.recipeapp.feature_recipe.domain.use_cases.GetRecipeByIdUseCase
 import dagger.hilt.android.lifecycle.HiltViewModel
@@ -27,7 +28,7 @@ class RecipeViewModel @Inject constructor(
 
     init {
 
-        savedStateHandle.get<Int>("recipeId")?.let {
+        savedStateHandle.get<Int>(Constants.PARAM_RECIPE_ID)?.let {
             getRecipe(id = it, token = token)
         }
 

@@ -14,7 +14,7 @@ fun RecipeList(
     page: Int,
     loading: Boolean,
     onTriggerEvent: (RecipeListEvent) -> Unit,
-onClickRecipeCard:(Int) ->Unit
+onClickRecipeCard:(Recipe) ->Unit
 ) {
 
 
@@ -34,7 +34,7 @@ onClickRecipeCard:(Int) ->Unit
 
             }
 
-            RecipeCard(recipe = recipe, onClick = onClickRecipeCard )
+            RecipeCard(recipe = recipe, onClick = {onClickRecipeCard(recipe)} )
         }
 
     }

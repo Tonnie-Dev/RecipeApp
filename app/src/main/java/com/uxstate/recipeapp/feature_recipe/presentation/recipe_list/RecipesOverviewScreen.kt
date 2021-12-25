@@ -111,7 +111,7 @@ fun RecipesOverviewScreen(
                     page = page,
                     loading = listState.loading,
                     onTriggerEvent = viewModel::onTriggerEvent,
-                    onClickRecipeCard = {id -> navController.navigate("${Screens.RecipeDetailScreen.route}/$id")}
+                    onClickRecipeCard = {recipe -> navController.navigate("${Screens.RecipeDetailScreen.route}/${recipe.id}")}
                 )
             }
 

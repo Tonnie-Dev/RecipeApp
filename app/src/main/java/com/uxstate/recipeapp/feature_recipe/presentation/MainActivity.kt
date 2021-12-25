@@ -4,7 +4,6 @@ import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.ui.ExperimentalComposeUiApi
-import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.toArgb
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
@@ -22,14 +21,13 @@ import javax.inject.Inject
 class MainActivity() : ComponentActivity() {
     //do field injection
     @Inject
-    lateinit var app:RecipeApp
-
+    lateinit var app: RecipeApp
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 //alternative is
-       // this.application
+        // this.application
         setContent {
             RecipeAppTheme(darkTheme = app.isDark.value) {
                 window?.statusBarColor = Blue800.toArgb()
@@ -46,9 +44,9 @@ class MainActivity() : ComponentActivity() {
                             navController = navController,
                             onToggleTheme = { app.toggleLightTheme() })
                     }
-                    composable(route = "${Screens.RecipeDetailScreen}/{recipeId}")
+                    composable(route = "${Screens.RecipeDetailScreen.route}/{recipeId}")
                     {
-RecipeDetailScreen()
+                        RecipeDetailScreen()
                     }
 
                 }
