@@ -1,6 +1,7 @@
 package com.uxstate.recipeapp.feature_recipe.presentation.recipe.viewmodel
 
 import androidx.compose.runtime.mutableStateOf
+import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.uxstate.recipeapp.core.util.Resource
@@ -15,7 +16,8 @@ import javax.inject.Named
 @HiltViewModel
 class RecipeViewModel @Inject constructor(
     private val useCase: GetRecipeByIdUseCase,
-    @Named("auth_token") private val token: String
+    @Named("auth_token") private val token: String,
+    private val savedStateHandle: SavedStateHandle
 ) : ViewModel() {
 
 
@@ -24,6 +26,8 @@ class RecipeViewModel @Inject constructor(
 
 
     init {
+
+        saved
         //call getRecipe()
         // TODO: 16-Dec-21  
         //getRecipe()
