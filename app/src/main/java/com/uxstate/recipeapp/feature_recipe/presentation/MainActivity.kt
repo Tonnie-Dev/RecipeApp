@@ -41,7 +41,6 @@ class MainActivity() : ComponentActivity() {
                 ) {
                     composable(route = Screens.RecipesOverviewScreen.route) {
 
-
                         RecipesOverviewScreen(navController = navController,{
 
                             app.toggleLightTheme()
