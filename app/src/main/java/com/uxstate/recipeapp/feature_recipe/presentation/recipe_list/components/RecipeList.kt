@@ -13,7 +13,8 @@ fun RecipeList(
     onChangeRecipeScrollPosition: (Int) -> Unit,
     page: Int,
     loading: Boolean,
-    onTriggerEvent: (RecipeListEvent) -> Unit
+    onTriggerEvent: (RecipeListEvent) -> Unit,
+onClickRecipeCard:(Int) ->Unit
 ) {
 
 
@@ -33,7 +34,7 @@ fun RecipeList(
 
             }
 
-            RecipeCard(recipe = recipe) {}
+            RecipeCard(recipe = recipe, onClick = onClickRecipeCard )
         }
 
     }

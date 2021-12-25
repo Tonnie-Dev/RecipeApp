@@ -41,10 +41,13 @@ class MainActivity() : ComponentActivity() {
                 ) {
                     composable(route = Screens.RecipesOverviewScreen.route) {
 
-                        RecipesOverviewScreen(navController = navController,{
+                        RecipesOverviewScreen(
+                            navController = navController,
+                            onToggleTheme = { app.toggleLightTheme() })
+                    }
+                    composable(route = "${Screens.RecipeDetailScreen}/{recipeId}")
+                    {
 
-                            app.toggleLightTheme()
-                        })
                     }
 
                 }

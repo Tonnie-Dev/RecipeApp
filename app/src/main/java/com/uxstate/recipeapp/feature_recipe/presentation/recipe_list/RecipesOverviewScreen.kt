@@ -16,6 +16,7 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavController
+import com.uxstate.recipeapp.feature_recipe.presentation.Screens
 import com.uxstate.recipeapp.feature_recipe.presentation.recipe_list.components.*
 import com.uxstate.recipeapp.feature_recipe.presentation.recipe_list.viewmodel.RecipeListEvent.FirstPageEvent
 import com.uxstate.recipeapp.feature_recipe.presentation.recipe_list.viewmodel.RecipesListViewModel
@@ -109,7 +110,8 @@ fun RecipesOverviewScreen(
                     onChangeRecipeScrollPosition = viewModel::onChangeRecipeScrollPosition,
                     page = page,
                     loading = listState.loading,
-                    onTriggerEvent = viewModel::onTriggerEvent
+                    onTriggerEvent = viewModel::onTriggerEvent,
+                    onClickRecipeCard = {id -> navController.navigate("${Screens.RecipeDetailScreen.route}/$id")}
                 )
             }
 

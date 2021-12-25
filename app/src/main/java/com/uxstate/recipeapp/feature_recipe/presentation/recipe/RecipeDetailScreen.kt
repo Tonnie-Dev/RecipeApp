@@ -5,7 +5,7 @@ import androidx.compose.runtime.Composable
 import com.uxstate.recipeapp.feature_recipe.presentation.Screens
 
 @Composable
-fun RecipeDetailsScreen() {
+fun RecipeDetailScreen() {
 
 
     Text(text = "Test")
