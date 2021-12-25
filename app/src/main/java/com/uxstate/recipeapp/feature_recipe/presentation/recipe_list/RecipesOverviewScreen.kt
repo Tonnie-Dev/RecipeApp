@@ -105,13 +105,23 @@ fun RecipesOverviewScreen(
 //list.isEmpty() ensures we only show shimmer if there is brand new search
                 ShowShimmer()
             } else {
+
+
                 RecipeList(
                     recipes = listState.recipes,
                     onChangeRecipeScrollPosition = viewModel::onChangeRecipeScrollPosition,
                     page = page,
                     loading = listState.loading,
                     onTriggerEvent = viewModel::onTriggerEvent,
-                    onClickRecipeCard = {recipe -> navController.navigate("${Screens.RecipeDetailScreen.route}/${recipe.id}")}
+                    onClickRecipeCard = {
+                            id ->
+                        navController.navigate(
+                        route = "${Screens.RecipeDetailScreen.route}/${id}"
+                        )
+                    }
+
+
+
                 )
             }
 

@@ -7,18 +7,21 @@ import androidx.lifecycle.viewModelScope
 import com.uxstate.recipeapp.core.util.Constants
 import com.uxstate.recipeapp.core.util.Resource
 import com.uxstate.recipeapp.feature_recipe.domain.use_cases.GetRecipeByIdUseCase
+import com.uxstate.recipeapp.feature_recipe.domain.use_cases.GetRecipesUseCase
+import com.uxstate.recipeapp.feature_recipe.presentation.recipe.viewmodel.RecipeEvent.GetRecipeEvent
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.launchIn
 import kotlinx.coroutines.flow.onEach
 import javax.inject.Inject
 import javax.inject.Named
 
-
+const val STATE_KEY_RECIPE = "state.key.recipe"
 @HiltViewModel
 class RecipeViewModel @Inject constructor(
     private val useCase: GetRecipeByIdUseCase,
-    @Named("auth_token") private val token: String,
-    private val savedStateHandle: SavedStateHandle
+    @Named("auth_token")
+    private val token: String,
+    savedStateHandle: SavedStateHandle
 ) : ViewModel() {
 
 
@@ -27,15 +30,23 @@ class RecipeViewModel @Inject constructor(
 
 
     init {
+        //pass the key inside get() fxn
+        savedStateHandle.get<Int>(Constants.PARAM_RECIPE_ID)
+                ?.let { id ->
+                    //getRecipe(id = id, token = token)
+                    onTriggerEvent(GetRecipeEvent(id = id))
+                }
 
-        savedStateHandle.get<Int>(Constants.PARAM_RECIPE_ID)?.let {
-            getRecipe(id = it, token = token)
-        }
+
+        //restore if process dies
+        savedStateHandle.get<Int>(STATE_KEY_RECIPE)
 
     }
 
 
-    fun getRecipe(id: Int, token: String) {
+    private fun getRecipe(id: Int, token: String) {
+
+
 //listen to emissions
         useCase(id = id, token = token).onEach {
 
@@ -55,8 +66,6 @@ class RecipeViewModel @Inject constructor(
                     )
                 }
                 is Resource.Error -> {
-
-
                     recipeState.value = recipeState.value.copy(
                         loading = false,
                         error = result.message ?: "An Unknown Error Occurred",
@@ -74,8 +83,23 @@ class RecipeViewModel @Inject constructor(
                 }
             }
 
-        }.launchIn(viewModelScope)
+        }
+                .launchIn(viewModelScope)
     }
 
 
+    fun onTriggerEvent(event: RecipeEvent){
+        try {
+            when(event){
+
+                is GetRecipeEvent -> {
+
+                    if ( recipeState.value.recipe == null){
+
+                        getRecipe(event.id, token = token)
+                    }
+                }
+            }
+        }
+    }
 }

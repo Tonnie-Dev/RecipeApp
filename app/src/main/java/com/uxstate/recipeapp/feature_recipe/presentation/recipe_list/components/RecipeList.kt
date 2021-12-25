@@ -36,7 +36,7 @@ fun RecipeList(
 
             RecipeCard(
                 recipe = recipe,
-                onClick = { onClickRecipeCard(recipe) }
+                onClick = onClickRecipeCard
             )
         }
 

@@ -38,12 +38,16 @@ class MainActivity() : ComponentActivity() {
                     navController = navController,
                     startDestination = Screens.RecipesOverviewScreen.route
                 ) {
+
+                    //1st Screen
                     composable(route = Screens.RecipesOverviewScreen.route) {
 
                         RecipesOverviewScreen(
                             navController = navController,
                             onToggleTheme = { app.toggleLightTheme() })
                     }
+
+                    //2nd Screen
                     composable(route = "${Screens.RecipeDetailScreen.route}/{recipeId}")
                     {
                         RecipeDetailScreen()
