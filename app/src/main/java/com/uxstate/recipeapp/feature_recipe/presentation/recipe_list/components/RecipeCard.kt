@@ -19,14 +19,14 @@ import com.uxstate.recipeapp.feature_recipe.domain.model.Recipe
 import timber.log.Timber
 
 @Composable
-fun RecipeCard(recipe: Recipe, onClick: (Recipe) -> Unit) {
+fun RecipeCard(recipe: Recipe, onClick: (Int) -> Unit) {
 
     Card(
         shape = MaterialTheme.shapes.small,
         modifier = Modifier
                 .padding(vertical = 6.dp)
                 .fillMaxWidth()
-                .clickable { onClick(recipe) },
+                .clickable { onClick(recipe.id) },
         elevation = 8.dp
     ) {
 
