@@ -10,6 +10,7 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import com.uxstate.recipeapp.RecipeApp
+import com.uxstate.recipeapp.feature_recipe.presentation.recipe.RecipeDetailScreen
 import com.uxstate.recipeapp.feature_recipe.presentation.recipe_list.RecipesOverviewScreen
 import com.uxstate.recipeapp.feature_recipe.presentation.ui.theme.Blue800
 import com.uxstate.recipeapp.feature_recipe.presentation.ui.theme.RecipeAppTheme
@@ -47,7 +48,7 @@ class MainActivity() : ComponentActivity() {
                     }
                     composable(route = "${Screens.RecipeDetailScreen}/{recipeId}")
                     {
-
+RecipeDetailScreen()
                     }
 
                 }

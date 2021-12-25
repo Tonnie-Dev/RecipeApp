@@ -30,7 +30,7 @@ class RecipeViewModel @Inject constructor(
         savedStateHandle.get<Int>("recipeId")?.let {
             getRecipe(id = it, token = token)
         }
-        
+
     }
 
 
