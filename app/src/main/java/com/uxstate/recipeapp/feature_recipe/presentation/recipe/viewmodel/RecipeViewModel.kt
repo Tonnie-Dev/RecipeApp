@@ -5,6 +5,7 @@ import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.uxstate.recipeapp.core.util.Constants
+import com.uxstate.recipeapp.core.util.Constants.PARAM_RECIPE_ID
 import com.uxstate.recipeapp.core.util.Resource
 import com.uxstate.recipeapp.feature_recipe.domain.use_cases.GetRecipeByIdUseCase
 import com.uxstate.recipeapp.feature_recipe.domain.use_cases.GetRecipesUseCase
@@ -12,6 +13,7 @@ import com.uxstate.recipeapp.feature_recipe.presentation.recipe.viewmodel.Recipe
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.launchIn
 import kotlinx.coroutines.flow.onEach
+import timber.log.Timber
 import java.lang.Exception
 import javax.inject.Inject
 import javax.inject.Named
@@ -31,11 +33,15 @@ class RecipeViewModel @Inject constructor(
 
 
     init {
+
         //pass the key inside get() fxn
-        savedStateHandle.get<Int>(Constants.PARAM_RECIPE_ID)
+        savedStateHandle.get<Int>(PARAM_RECIPE_ID)
                 ?.let { id ->
-                    //getRecipe(id = id, token = token)
-                    onTriggerEvent(GetRecipeEvent(id = id))
+                   //getRecipe(id = id, token = token)
+
+                    Timber.i("Passed id is $id")
+
+                onTriggerEvent(GetRecipeEvent(id = id))
                 }
 
 
@@ -80,7 +86,7 @@ class RecipeViewModel @Inject constructor(
                         error = "",
                         recipe = result.data
                     )
-
+Timber.i("the recipe is Recipe: ${result.data?.title}")
                 }
             }
 

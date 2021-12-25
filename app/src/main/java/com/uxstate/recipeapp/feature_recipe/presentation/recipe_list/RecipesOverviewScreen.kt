@@ -20,6 +20,7 @@ import com.uxstate.recipeapp.feature_recipe.presentation.Screens
 import com.uxstate.recipeapp.feature_recipe.presentation.recipe_list.components.*
 import com.uxstate.recipeapp.feature_recipe.presentation.recipe_list.viewmodel.RecipeListEvent.FirstPageEvent
 import com.uxstate.recipeapp.feature_recipe.presentation.recipe_list.viewmodel.RecipesListViewModel
+import timber.log.Timber
 
 @ExperimentalComposeUiApi
 @Composable
@@ -115,8 +116,13 @@ fun RecipesOverviewScreen(
                     onTriggerEvent = viewModel::onTriggerEvent,
                     onClickRecipeCard = {
                             id ->
+                        Timber.i("Packed id is: $id")
+                        //I insert corresponding Int id into the route
                         navController.navigate(
-                        route = "${Screens.RecipeDetailScreen.route}/${id}"
+                        route = "${Screens.RecipeDetailScreen.route}/$id"
+
+
+
                         )
                     }
 

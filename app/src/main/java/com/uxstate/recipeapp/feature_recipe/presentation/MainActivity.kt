@@ -5,9 +5,11 @@ import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.ui.ExperimentalComposeUiApi
 import androidx.compose.ui.graphics.toArgb
+import androidx.navigation.NavType
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
+import androidx.navigation.navArgument
 import com.uxstate.recipeapp.RecipeApp
 import com.uxstate.recipeapp.feature_recipe.presentation.recipe.RecipeDetailScreen
 import com.uxstate.recipeapp.feature_recipe.presentation.recipe_list.RecipesOverviewScreen
@@ -48,7 +50,13 @@ class MainActivity() : ComponentActivity() {
                     }
 
                     //2nd Screen
-                    composable(route = "${Screens.RecipeDetailScreen.route}/{recipeId}")
+                    composable(
+                        route = "${Screens.RecipeDetailScreen.route}/{recipeId}",
+                        arguments = listOf(
+                            navArgument(name = "recipeId",
+                                builder = { type = NavType.IntType })
+                        )
+                    )
                     {
                         RecipeDetailScreen()
                     }
