@@ -47,8 +47,24 @@ fun RecipeDetailsSection(recipe: Recipe) {
 
         }
 
-Text(text = "Updated ${recipe.dateUpdate} by ${recipe.publisher}")
+        Text(
+            text = "Updated ${recipe.dateUpdate} by ${recipe.publisher}",
+            style = MaterialTheme.typography.caption,
+            modifier = Modifier
+                    .fillMaxWidth()
+                    .padding(bottom = 8.dp)
+        )
 
+
+        for (ingredient in recipe.ingredients) {
+
+            Text(text = ingredient,
+                modifier = Modifier
+                        .fillMaxWidth()
+                        .padding(bottom = 8.dp),
+                style = MaterialTheme.typography.body1
+            )
+        }
     }
 
 
