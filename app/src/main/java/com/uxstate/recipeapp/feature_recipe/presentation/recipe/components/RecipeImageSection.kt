@@ -13,12 +13,7 @@ import com.uxstate.recipeapp.R
 import com.uxstate.recipeapp.feature_recipe.domain.model.Recipe
 
 @Composable
-fun RecipeView(recipe: Recipe) {
-
-    Column(
-
-    ) {
-
+fun RecipeImageSection(recipe: Recipe) {
         //load image
 
         Image(
@@ -37,4 +32,3 @@ fun RecipeView(recipe: Recipe) {
 
     }
 
-}
