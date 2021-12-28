@@ -1,5 +1,6 @@
 package com.uxstate.recipeapp.feature_recipe.presentation.recipe
 
+import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.rememberScrollState
@@ -24,17 +25,32 @@ fun RecipeDetailScreen(
 
    /// Text(text = "The Id is ${recipeState.recipe?.id}")
 
-    Column(modifier = Modifier
-            .fillMaxWidth()
-            .verticalScroll(scrollState)) {
+    Box {
 
-        recipeState.recipe?.let {
+        if (recipeState.loading){
 
 
-            RecipeImageSection(recipe = it)
-            RecipeDetailsSection(recipe = it)
+            // TODO: 28-Dec-21 Add Shimmer 
         }
+        else{
 
+
+            Column(
+                modifier = Modifier
+                        .fillMaxWidth()
+                        .verticalScroll(scrollState)
+            ) {
+
+                recipeState.recipe?.let {
+
+
+                    RecipeImageSection(recipe = it)
+                    RecipeDetailsSection(recipe = it)
+                }
+
+
+            }
+        }
 
     }
 
