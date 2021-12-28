@@ -24,7 +24,7 @@ fun RecipeCard(recipe: Recipe, onClick: (Int) -> Unit) {
     Card(
         shape = MaterialTheme.shapes.small,
         modifier = Modifier
-                .padding(vertical = 6.dp)
+                .padding(vertical = 6.dp, horizontal = 8.dp)
                 .fillMaxWidth()
                 .clickable { onClick(recipe.id) },
         elevation = 8.dp
