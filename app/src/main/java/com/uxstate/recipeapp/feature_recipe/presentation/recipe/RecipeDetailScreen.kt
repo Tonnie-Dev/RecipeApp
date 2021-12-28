@@ -31,6 +31,8 @@ fun RecipeDetailScreen(
 
 
             // TODO: 28-Dec-21 Add Shimmer 
+            
+            Text(text = "LOADING")
         }
         else{
 
