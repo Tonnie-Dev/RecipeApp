@@ -21,27 +21,28 @@ fun LoadingRecipeShimmer(brush: Brush) {
 
         Spacer(
             modifier = Modifier
-                    .height(250.dp)
+                    .height(300.dp)
                     .fillMaxWidth()
+                    .padding(horizontal = 8.dp, vertical = 16.dp)
                     .background(brush = brush)
         )
         Spacer(
             modifier = Modifier
-                    .height(65.dp)
+                    .height(50.dp)
                     .padding(8.dp)
                     .fillMaxWidth()
                     .background(brush = brush)
         )
         Spacer(
             modifier = Modifier
-                    .height(65.dp)
+                    .height(50.dp)
                     .padding(8.dp)
                     .fillMaxWidth()
                     .background(brush = brush)
         )
         Spacer(
             modifier = Modifier
-                    .height(65.dp)
+                    .height(50.dp)
                     .padding(8.dp)
                     .fillMaxWidth()
                     .background(brush = brush)
