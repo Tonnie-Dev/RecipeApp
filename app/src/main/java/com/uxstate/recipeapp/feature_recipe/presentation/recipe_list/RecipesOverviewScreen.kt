@@ -104,7 +104,7 @@ fun RecipesOverviewScreen(
 
             if (listState.loading && listState.recipes.isEmpty()) {
 //list.isEmpty() ensures we only show shimmer if there is brand new search
-                ShowShimmer()
+                ShowRecipeListShimmer()
             } else {
 
 

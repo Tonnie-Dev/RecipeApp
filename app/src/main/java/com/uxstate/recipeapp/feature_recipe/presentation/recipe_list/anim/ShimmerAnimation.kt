@@ -9,7 +9,7 @@ import com.uxstate.recipeapp.feature_recipe.presentation.recipe_list.components.
 import com.uxstate.recipeapp.feature_recipe.presentation.ui.theme.ShimmerColorShades
 
 @Composable
-fun ShimmerAnimation() {
+fun ShimmerAnimation(Content: @Composable (Brush) -> Unit) {
 
     /*
         Create InfiniteTransition
@@ -41,7 +41,7 @@ fun ShimmerAnimation() {
         start = Offset(-40f, -40f),
         end = Offset(translateAnim, translateAnim)
     )
-    
-    ShimmerRecipeCardItem(brush = brush)
+    Content(brush)
+    //ShimmerRecipeCardItem(brush = brush)
 
 }

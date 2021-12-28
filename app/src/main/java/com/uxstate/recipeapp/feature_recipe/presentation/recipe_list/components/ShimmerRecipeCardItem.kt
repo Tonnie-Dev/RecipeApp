@@ -38,13 +38,13 @@ fun ShimmerRecipeCardItem(
 
 
 @Composable
-fun ShowShimmer() {
+fun ShowRecipeListShimmer() {
     LazyColumn() {
 
         repeat(5) {
 
             item {
-                ShimmerAnimation()
+                ShimmerAnimation { brush -> ShimmerRecipeCardItem(brush = brush) }
             }
         }
     }
