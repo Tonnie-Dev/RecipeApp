@@ -3,11 +3,13 @@ package com.uxstate.recipeapp.feature_recipe.presentation.recipe.components
 import androidx.compose.foundation.layout.*
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import com.uxstate.recipeapp.feature_recipe.presentation.recipe_list.anim.ShimmerAnimation
 
 @Composable
-fun LoadingRecipeShimmer() {
+fun LoadingRecipeShimmer(brush: Brush) {
 
 
     Column(modifier = Modifier
@@ -29,10 +31,11 @@ fun LoadingRecipeShimmer() {
 }
 
 
-@Preview(name = "Recipe Shimmer")
 @Composable
-fun PreviewRecipeShimmer() {
-
-    LoadingRecipeShimmer()
-
+fun ShowRecipeDetailShimmer() {
+    
+    
+    ShimmerAnimation {
+        brush ->  LoadingRecipeShimmer(brush = brush)
+    }
 }

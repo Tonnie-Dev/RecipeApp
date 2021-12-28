@@ -12,6 +12,7 @@ import androidx.compose.ui.Modifier
 import androidx.hilt.navigation.compose.hiltViewModel
 import com.uxstate.recipeapp.feature_recipe.presentation.recipe.components.RecipeDetailsSection
 import com.uxstate.recipeapp.feature_recipe.presentation.recipe.components.RecipeImageSection
+import com.uxstate.recipeapp.feature_recipe.presentation.recipe.components.ShowRecipeDetailShimmer
 import com.uxstate.recipeapp.feature_recipe.presentation.recipe.viewmodel.RecipeViewModel
 
 @Composable
@@ -31,8 +32,8 @@ fun RecipeDetailScreen(
 
 
             // TODO: 28-Dec-21 Add Shimmer 
-            
-            Text(text = "LOADING")
+
+            ShowRecipeDetailShimmer()
         }
         else{
 
