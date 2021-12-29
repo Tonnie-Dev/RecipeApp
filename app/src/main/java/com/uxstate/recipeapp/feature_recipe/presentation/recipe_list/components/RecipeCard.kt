@@ -11,6 +11,7 @@ import androidx.compose.ui.Alignment.Companion.CenterVertically
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.text.style.TextAlign
+import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import coil.compose.rememberImagePainter
@@ -62,7 +63,9 @@ fun RecipeCard(recipe: Recipe, onClick: (Int) -> Unit) {
                     text = recipe.title,
                     textAlign = TextAlign.Start,
                     modifier = Modifier.fillMaxWidth(0.85f),
-                    style = MaterialTheme.typography.h3
+                    style = MaterialTheme.typography.h3,
+                    overflow = TextOverflow.Ellipsis,
+                    maxLines = 1
 
                 )
                 Text(
