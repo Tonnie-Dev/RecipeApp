@@ -16,6 +16,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.ExperimentalComposeUiApi
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalSoftwareKeyboardController
+import androidx.compose.ui.text.PlaceholderVerticalAlign.Companion.Top
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.input.ImeAction
 import androidx.compose.ui.text.input.KeyboardType
@@ -46,6 +47,7 @@ onClearTextField:()-> Unit,
                         .padding(8.dp),
 
                 label = { Text(text = "search") },
+          
 
                 keyboardOptions = KeyboardOptions(
                     keyboardType = KeyboardType.Text,

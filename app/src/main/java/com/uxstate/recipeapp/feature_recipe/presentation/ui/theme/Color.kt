@@ -23,6 +23,9 @@ val Black2 = Color(0xFF000000)
 
 val RedErrorDark = Color(0xFFB00020)
 val RedErrorLight = Color(0xFFEF5350)
+
+
+
 val ShimmerColorShades = listOf(
     Color.LightGray.copy(alpha =0.9f),
     Color.LightGray.copy(alpha =0.29f),
