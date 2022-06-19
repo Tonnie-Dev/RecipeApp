@@ -21,7 +21,7 @@ import javax.inject.Inject
 @AndroidEntryPoint
 @ExperimentalComposeUiApi
 class MainActivity() : ComponentActivity() {
-    //do field injection
+    //do field injection, main activity has empty constructor
     @Inject
     lateinit var app: RecipeApp
 
